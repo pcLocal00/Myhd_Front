@@ -1,0 +1,123 @@
+.rightSideBar {
+  width: 20%;
+  height: 90vh;
+  background-color: white;
+  padding: 20px;
+  border-radius: 15px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 40px 40px 0 0;
+  position: relative;
+}
+.headerWrapper{
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+}
+.rightSideBar h2 {
+  margin: 0;
+  font-size: 26px;
+}
+.rightSideBar h3 {
+  margin: 10px 0;
+  font-size: 26px;
+}
+.rightSideBar h2::after {
+  content: "";
+  display: block;
+  height: 2px;
+  width: 100%;
+  border-bottom: 2px solid #c6e2ed;
+}
+.newsItems {
+  height: 60%;
+  overflow: auto;
+}
+
+.wrapperlogoImage {
+  width: 45%;
+}
+.logoImage {
+  width: 100%;
+}
+.detailsNewsItem {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  justify-content: center;
+  align-items: center;
+  width: 70%;
+}
+.newsItem {
+  padding: 15px 2px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.newsItem label {
+  font-family: Poppins;
+  font-size: 12px;
+  font-weight: 300;
+  text-align: center;
+}
+
+.newsItem span {
+  color: #0a53c5;
+  font-family: Poppins;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.newsItem h4 {
+  margin: 5px 0;
+  font-size: 18px;
+}
+.newsItem h1 {
+  margin: 5px 0;
+  font-size: 14px;
+  color: #00b7c9;
+  font-weight: 200;
+}
+.StarWrapper {
+  color: #f9cf14;
+  font-size: 40px;
+}
+.footerNewsItem {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  position: absolute;
+  align-items: center;
+  bottom: 0;
+  margin-bottom: 30px;
+  width: 100%;
+}
+.LocationWrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.franceWrapper,
+.truckWrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  flex: 1 50%;
+  font-size: 10px;
+}
+.ratingWrapper{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+}
+.rating{
+  color: #0A53C5;
+  font-size: 22px;
+}
+.vote{
+  font-size: 12px;
+}

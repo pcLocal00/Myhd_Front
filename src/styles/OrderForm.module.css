@@ -1,0 +1,238 @@
+@font-face {
+  font-family: "Futura";
+  src: url("/fonts/Futura/FuturaPTBold.otf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
+  font-family: "Poppins";
+  src: url("/fonts/Poppins/Poppins-Regular.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+}
+.container {
+  display: flex;
+}
+.mainContainer {
+  display: flex;
+  flex-direction: column;
+  width: 83%;
+  padding: 20px;
+}
+.mainContainerOrder{
+  display: flex;
+  flex-direction: column;
+  width: 62%;
+  padding: 20px;
+}
+.middleContainer {
+  display: flex;
+  flex-direction: column;
+  padding: 30px;
+  margin: 0 30px;
+  border-radius: 15px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+.middleContainer h2 {
+  margin: 0px;
+}
+.middleContainer h3 {
+  font-family: Poppins;
+  font-size: 10px;
+  font-weight: 275;
+  line-height: 17px;
+  letter-spacing: 0.04em;
+  text-align: left;
+  color: #aba7a7;
+}
+.headerContainer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.plusButton {
+  border-radius: 50%;
+  height: 35px;
+  width: 35px;
+  background: #05a8cc;
+  color: white;
+  font-size: 20px;
+  font-weight: 900;
+  border: 1px solid;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  padding: 0;
+  line-height: 1;
+}
+.pdfIcon {
+  font-size: 30px;
+  color: red;
+  text-align: center;
+}
+.pictureIcon {
+  font-size: 30px;
+  color: black;
+  text-align: center;
+}
+
+.closeButton,
+.checkButton,
+.searchButton {
+  border-radius: 50%;
+  color: white;
+  font-size: 24px;
+  font-weight: 900;
+  width: 25px;
+  height: 25px;
+  margin: 0 2px;
+}
+.searchButton {
+  background: #0050eb;
+}
+.checkButton {
+  background: #00ba00;
+}
+.closeButton {
+  background: red;
+}
+.infoContainer {
+  display: flex;
+  justify-content: space-between;
+}
+.leftSide {
+  display: flex;
+  flex: 1 58%;
+  flex-direction: column;
+  gap: 10px;
+}
+.rightSide {
+  display: flex;
+  flex: 1 38%;
+  flex-direction: column;
+  gap: 10px;
+}
+.labelContainer,
+.labelContainerDark {
+  display: flex;
+  padding: 15px;
+  border-radius: 10px;
+}
+.labelContainer label:first-child {
+  flex-basis: 40%;
+  color: #000000;
+  font-family: Poppins;
+  font-size: 10px;
+  font-weight: 700;
+  line-height: 17px;
+  letter-spacing: 0.04em;
+  text-align: left;
+}
+.labelContainerDark label:first-child {
+  flex-basis: 40%;
+  color: #000000;
+  font-family: Poppins;
+  font-size: 10px;
+  font-weight: 700;
+  line-height: 17px;
+  letter-spacing: 0.04em;
+  text-align: left;
+}
+.labelContainer label:last-child {
+  /* flex-basis: 60%; */
+  font-family: Poppins;
+  font-size: 10px;
+  font-weight: 500;
+  line-height: 17px;
+  letter-spacing: 0.04em;
+  text-align: left;
+  color: #8f8f8f;
+}
+.labelContainerDark label:last-child {
+  flex-basis: 60%;
+  font-family: Poppins;
+  font-size: 10px;
+  font-weight: 500;
+  line-height: 17px;
+  letter-spacing: 0.04em;
+  text-align: left;
+  color: #8f8f8f;
+}
+
+.labelContainerDark {
+  background: #f2f2f2;
+}
+.middleLine {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+}
+.Line {
+  width: 4px;
+  height: 100%;
+  background: #d9d9d9;
+}
+
+.JointesContainer {
+  background: #f2f2f2;
+  display: flex;
+  justify-content: space-around;
+  padding-bottom: 15px;
+}
+.JointfirstSection h6,
+.JointSecondeSection h6,
+.JointThirdSection h6,
+.JointFourthSection h6 {
+  margin: 15px;
+}
+.inputComment {
+  width: 100%;
+  height: 100px;
+  resize: none;
+  border-radius: 30px;
+  margin-bottom: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+.inputComment::placeholder {
+  color: #aba7a7;
+  padding: 10px 0 0 20px;
+  font-family: Poppins;
+  font-size: 12px;
+  line-height: 17px;
+  letter-spacing: 0.04em;
+  text-align: left;
+}
+.commentSection h4 {
+  font-family: Poppins;
+  font-size: 19px;
+  font-weight: 700;
+  line-height: 28.5px;
+  text-align: left;
+  color: #000000;
+}
+.commentSection label {
+  font-family: Poppins;
+  font-size: 10px;
+  font-weight: 500;
+  line-height: 17px;
+  letter-spacing: 0.04em;
+  text-align: left;
+  
+  color: #000000;
+}
+.price{
+  padding: 5px;
+  background: #00BA00;
+  border-radius: 10px;
+  width: fit-content !important;
+  color: white !important;
+}
+.date{
+  background: green;
+  color: white;
+  padding: 5px;
+  border-radius: 10px;
+  width: fit-content;
+}

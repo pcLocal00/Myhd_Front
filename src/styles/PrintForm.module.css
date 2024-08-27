@@ -1,0 +1,240 @@
+@font-face {
+  font-family: "Futura";
+  src: url("/fonts/Futura/FuturaPTBold.otf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
+  font-family: "Poppins";
+  src: url("/fonts/Poppins/Poppins-Regular.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+}
+.container {
+  display: flex;
+}
+.mainContainer {
+  display: flex;
+  flex-direction: column;
+  width: 60%;
+  padding: 20px;
+}
+.middleContainer {
+  display: flex;
+  flex-direction: column;
+  padding: 30px;
+  margin: 0 30px;
+  border-radius: 15px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+.middleContainer h2 {
+  margin: 0px;
+}
+.middleContainer h3 {
+  font-family: Poppins;
+  font-size: 10px;
+  font-weight: 275;
+  line-height: 17px;
+  letter-spacing: 0.04em;
+  text-align: left;
+  color: #aba7a7;
+}
+.cardWrappers {
+  display: flex;
+}
+.cardWrapper {
+  margin: 30px;
+  border-radius: 30px;
+  overflow: hidden;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: column;
+}
+.wrapperlogoImage {
+  height: 160px;
+  width: 100%;
+  overflow: hidden;
+  background: #b1b1b1;
+}
+
+.logoImage {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.cardWrapper label {
+  font-family: Poppins;
+  font-size: 12px;
+  font-weight: 300;
+  text-align: center;
+}
+
+.cardWrapper span {
+  color: #0a53c5;
+  font-family: Poppins;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.cardWrapper h4 {
+  margin: 5px 0;
+  font-size: 18px;
+}
+
+.detailsCardWrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background: #f5f5f5;
+  padding: 15px;
+}
+.visitCard h6:after {
+  content: "";
+  display: flex;
+  height: 4px;
+  background: #624d8f;
+  width: 80%;
+  position: relative;
+  bottom: 15px;
+  left: 180px;
+}
+.visitCard h6 {
+  font-family: Poppins;
+  font-size: 23px;
+  font-weight: 700;
+  line-height: 34.5px;
+  text-align: justified;
+  color: #00b7c9;
+}
+.input {
+  margin-bottom: 10px;
+  padding: 7px;
+  font-size: 16px;
+  border: 1px solid transparent;
+  border-radius: 50px;
+  width: 70%;
+  background-color: #e6e6e6;
+}
+.input::placeholder {
+  padding-left: 20px;
+}
+.inputWrapper {
+  width: 100%;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 10px;
+}
+.inputWrapper label {
+  font-family: Poppins;
+  font-size: 14px;
+  font-weight: 700;
+  text-align: right;
+  color: black;
+}
+.imagesContainer {
+  flex: 1 35%;
+  height: 460px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.inputContainer {
+  flex: 1 70%;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-end;
+  width: 100%;
+}
+.visitCard3 {
+  width: 100%;
+  height: 76%;
+}
+.smallImagesContainer {
+  display: flex;
+  width: 100%;
+  height: 22%;
+  justify-content: space-between;
+}
+.book {
+  width: 30%;
+  height: 100%;
+}
+.checkWrapper {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+  padding-left: 21px;
+}
+.headerWrapper {
+  display: flex;
+  width: 100%;
+  justify-content: flex-start;
+}
+.headerWrapper h6 {
+  font-family: Poppins;
+  font-size: 14px;
+  font-weight: 700;
+  margin: 5px 0 5px 21px;
+  text-align: left;
+  width: 100%;
+  color: black;
+}
+.headerWrapper h6:after {
+  content: "";
+  display: flex;
+  height: 4px;
+  background: #624d8f;
+  width: 87%;
+  position: relative;
+  bottom: 15px;
+  left: 80px;
+}
+.selectiveVarnish{
+  border-radius: 0;
+  background: #D9D9D9;
+}
+
+/* .footerContainer{
+  
+} */
+.footerContainer p{
+  font-family: Poppins;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 30px;
+  text-align: left;
+  padding: 0;
+  margin: 0;
+}
+.footerContainer h5,.footerContainer h4{
+  font-family: Poppins;
+  font-size: 23px;
+  font-weight: 700;
+  margin: 10px;
+  color: #00B7C9;
+}
+.footerContainer h5:after ,.footerContainer h4:after {
+  content: "";
+  display: flex;
+  height: 4px;
+  background: #624d8f;
+  position: relative;
+  bottom: 15px;
+}
+.footerContainer h5:after {
+  width: 72%;
+  left: 280px;
+}
+.footerContainer h4:after {
+  width: 68%;
+  left: 320px;
+}
+.questionsWrapper{
+  padding: 10px;
+  display: flex;
+  justify-content: space-between;
+  color: #06A4CC;
+}
