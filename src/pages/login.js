@@ -7,7 +7,7 @@ const LoginPage = () => {
   const router = useRouter();
   const [error, setError] = useState('');
 
-  const handleLogin = async (email, password) => {
+  const handleLogin = async (loginUser, passwordUser) => {
     try {
       // Call your authentication API here
       const response = await fetch('http://127.0.0.1:8000/api/login', {
@@ -15,7 +15,7 @@ const LoginPage = () => {
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify({ email, password }),
+        body: JSON.stringify({ loginUser, passwordUser }),
       });
 
       if (!response.ok) {

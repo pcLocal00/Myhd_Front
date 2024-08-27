@@ -4,8 +4,8 @@ import Image from 'next/image';
 
 const LoginForm = ({ onLogin }) => {
   const [state, setState] = useState({
-    email: '',
-    password: '',
+    loginUser: '',
+    passwordUser: '',
     rememberMe: false,
   });
 
@@ -19,15 +19,16 @@ const LoginForm = ({ onLogin }) => {
 
   const handleOnSubmit = async (evt) => {
     evt.preventDefault();
-    const { email, password } = state;
-    console.log(email, password);
-    await onLogin(email, password);
+    const { loginUser, passwordUser } = state;
+    console.log(loginUser, passwordUser);
+    await onLogin(loginUser, passwordUser);
     setState({
-      email: '',
-      password: '',
+      loginUser: '',
+      passwordUser: '',
       rememberMe: false,
     });
-  }; 
+  };
+  
 
   return (
     <div className={styles.container}>
@@ -47,7 +48,7 @@ const LoginForm = ({ onLogin }) => {
             type="text"
             placeholder="Identifiant"
             name="loginUser"
-            value={state.email}
+            value={state.loginUser}
             onChange={handleChange}
             className={styles.input}
           />
@@ -55,7 +56,7 @@ const LoginForm = ({ onLogin }) => {
             type="password"
             name="passwordUser"
             placeholder="Mot de passe"
-            value={state.password}
+            value={state.passwordUser}
             onChange={handleChange}
             className={styles.input}
           />
