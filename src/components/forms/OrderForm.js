@@ -17,8 +17,11 @@ const OrderForm = () => {
     
     const [job, setJob] = useState([]);
     const orderUrl = `/order/`;
+
+    const Url = process.env.NEXT_PUBLIC_API_URL;
+
     useEffect(() => {
-        fetch('http://127.0.0.1:8000/api/job')
+        fetch(`${Url}/job`)
             .then((response) => response.json())
             .then((data) => {
                 setJob(data);

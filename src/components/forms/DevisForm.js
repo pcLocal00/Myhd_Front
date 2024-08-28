@@ -15,8 +15,10 @@ const DevisForm = () => {
     const [loading, setLoading] = useState(false);
     const [devis, setDevis] = useState([]);
 
+    const Url = process.env.NEXT_PUBLIC_API_URL;
+
     useEffect(() => {
-        fetch('http://127.0.0.1:8000/api/devis')
+        fetch(`${Url}/devis`)
             .then((response) => response.json())
             .then((data) => {
                 setDevis(data);

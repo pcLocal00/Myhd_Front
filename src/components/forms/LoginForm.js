@@ -3,6 +3,7 @@ import styles from '../../styles/LoginForm.module.css';
 import Image from 'next/image';
 
 const LoginForm = ({ onLogin }) => {
+
   const [state, setState] = useState({
     loginUser: '',
     passwordUser: '',
@@ -29,7 +30,6 @@ const LoginForm = ({ onLogin }) => {
     });
   };
   
-
   return (
     <div className={styles.container}>
 

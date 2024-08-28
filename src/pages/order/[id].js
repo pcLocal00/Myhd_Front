@@ -20,9 +20,10 @@ const OrderPage = () => {
     const [checkedFrs, setCheckedFrs] = useState(false);
     const [checkedClient, setCheckedClient] = useState(false);
 
+    const Url = process.env.NEXT_PUBLIC_API_URL;
 
     useEffect(() => {
-        fetch(`http://127.0.0.1:8000/api/devis/${id}`)  
+        fetch(`${Url}/devis/${id}`)  
             .then((response) => response.json())
             .then((data) => {
                 setDevis(data);
