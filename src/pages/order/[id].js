@@ -11,6 +11,8 @@ import { BsFiletypePdf } from "react-icons/bs";
 import { DataTable } from 'primereact/datatable';
 import { Column } from 'primereact/column';
 import { InputSwitch } from 'primereact/inputswitch';
+import axios from 'axios';
+
 
 const OrderPage = () => {
     const router = useRouter();
@@ -23,17 +25,20 @@ const OrderPage = () => {
     const Url = process.env.NEXT_PUBLIC_API_URL;
 
     useEffect(() => {
-        fetch(`${Url}/devis/${id}`)  
-            .then((response) => response.json())
-            .then((data) => {
-                setDevis(data);
-                setLoading(false);
-            })
-            .catch((error) => {
-                console.error('Error fetching devis:', error);
-                setLoading(false);
-            });
-    }, [id]);
+        const fetchDevis = async () => {
+          try {
+            const response = await axios.get(`${Url}/devis/${id}`);
+            setDevis(response.data);
+          } catch (error) {
+            console.error('Error fetching devis:', error);
+          } finally {
+            setLoading(false);
+          }
+        };
+        if (id) {
+          fetchDevis();
+        }
+    }, [id, Url]);
 
 
     return (

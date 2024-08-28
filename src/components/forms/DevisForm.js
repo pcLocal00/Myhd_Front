@@ -10,6 +10,8 @@ import { Tag } from 'primereact/tag';
 import "primereact/resources/themes/lara-light-cyan/theme.css";
 import { BsFiletypePdf } from "react-icons/bs";
 import { MdClose, MdCheck , MdSearch } from "react-icons/md";
+import axios from 'axios';
+
 const DevisForm = () => {
 
     const [loading, setLoading] = useState(false);
@@ -18,17 +20,20 @@ const DevisForm = () => {
     const Url = process.env.NEXT_PUBLIC_API_URL;
 
     useEffect(() => {
-        fetch(`${Url}/devis`)
-            .then((response) => response.json())
-            .then((data) => {
-                setDevis(data);
-                setLoading(false);
-            })
-            .catch((error) => {
-                console.error('Error fetching devis:', error);
-                setLoading(false);
-            });
-    }, []);
+        const fetchDevis = async () => {
+          try {
+            const response = await axios.get(`${Url}/devis`);
+            setDevis(response.data);
+          } catch (error) {
+            console.error('Error fetching devis:', error);
+          } finally {
+            setLoading(false);
+          }
+        };
+
+    fetchDevis();
+    }, [Url]);
+    
 
     const getSeverity = (status) => {
         switch (status) {

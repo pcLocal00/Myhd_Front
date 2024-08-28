@@ -11,6 +11,7 @@ import "primereact/resources/themes/lara-light-cyan/theme.css";
 import { ImFilePicture } from "react-icons/im";
 import { MdClose, MdCheck , MdSearch } from "react-icons/md";
 import Link from "next/link";
+import axios from "axios";
 
 const OrderForm = () => {
     const [loading, setLoading] = useState(false);
@@ -21,17 +22,19 @@ const OrderForm = () => {
     const Url = process.env.NEXT_PUBLIC_API_URL;
 
     useEffect(() => {
-        fetch(`${Url}/job`)
-            .then((response) => response.json())
-            .then((data) => {
-                setJob(data);
-                setLoading(false);
-            })
-            .catch((error) => {
-                console.error('Error fetching devis:', error);
-                setLoading(false);
-            });
-    }, []);
+        const fetchJobs = async () => {
+          try {
+            const response = await axios.get(`${Url}/job`);
+            setJob(response.data);
+          } catch (error) {
+            console.error('Error fetching jobs:', error);
+          } finally {
+            setLoading(false);
+          }
+        };
+    
+        fetchJobs();
+    }, [Url]);
 
     const getSeverity = (status) => {
         switch (status) {
