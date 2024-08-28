@@ -1,11 +1,10 @@
 // src/pages/index.js
-import React from 'react';
+import HomeForm from '../components/forms/HomeForm';
 
 const HomePage = () => {
   return (
     <div>
-      <h1>Welcome to the Home Page</h1>
-      <p>This is your main landing page.</p>
+      <HomeForm/>
     </div>
   );
 };
