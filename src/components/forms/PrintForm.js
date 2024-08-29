@@ -23,7 +23,7 @@ const PrintForm = () => {
             <TabPanel header="Carte visite">
               <div className={styles.visitCard}>
                 <div className={styles.cardWrappers}>
-                  <Link href={productUrl} passHref>
+                  <Link href={productUrl} passHref style={{ textDecoration: "none" , color:"inherit"}}>
                     <div className={styles.cardWrapper}>
                       <div className={styles.wrapperlogoImage}>
                         <Image

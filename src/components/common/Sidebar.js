@@ -9,6 +9,7 @@ import { IoBagCheck } from "react-icons/io5";
 import { ImStatsDots } from "react-icons/im";
 import { MdOutlineHelpOutline } from "react-icons/md";
 import { IoIosArrowDown } from "react-icons/io";
+import Link from "next/link";
 
 const Sidebar = () => {
   const [openDropdown, setOpenDropdown] = useState(null);
@@ -35,7 +36,9 @@ const Sidebar = () => {
           </div>
           {openDropdown === 1 && (
             <ul className={styles.dropdown}>
-              <li>Subcategory 1</li>
+              <Link href={`/catalogue`} passHref>
+                <li>MON CATALOGUE</li>
+              </Link>
               <li>Subcategory 2</li>
               <li>Subcategory 3</li>
             </ul>
@@ -45,31 +48,21 @@ const Sidebar = () => {
         <div className={styles.menuItem}>
           <div className={styles.menuItemTrigger}>
             <FaHandHoldingMedical />
-            <h3 onClick={() => toggleDropdown(2)}>MES SERVICES</h3>
+              <Link href={`/devis`} passHref style={{ textDecoration: "none" }}>
+                <h3>MON DEVIS</h3>
+              </Link>
             <IoIosArrowDown />
           </div>
-          {openDropdown === 2 && (
-            <ul className={styles.dropdown}>
-              <li>Subcategory 1</li>
-              <li>Subcategory 2</li>
-              <li>Subcategory 3</li>
-            </ul>
-          )}
         </div>
 
         <div className={styles.menuItem}>
           <div className={styles.menuItemTrigger}>
             <IoBagCheck />
-            <h3 onClick={() => toggleDropdown(3)}>LES PRODUITS</h3>
+              <Link href={`/order`} passHref style={{ textDecoration: "none" }}>
+                <h3>MON COMMANDES</h3>
+              </Link>
             <IoIosArrowDown />
           </div>
-          {openDropdown === 3 && (
-            <ul className={styles.dropdown}>
-              <li>Subcategory 1</li>
-              <li>Subcategory 2</li>
-              <li>Subcategory 3</li>
-            </ul>
-          )}
         </div>
 
         <div className={styles.menuItem}>

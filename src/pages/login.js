@@ -6,7 +6,7 @@ import { useRouter } from 'next/router';
 
 const LoginPage = () => {
   const router = useRouter();
-  const { logout } = useContext(AuthContext); // Access logout function from context
+  const { logout } = useContext(AuthContext);
   const [error, setError] = useState('');
   
   const Url = process.env.NEXT_PUBLIC_API_URL;

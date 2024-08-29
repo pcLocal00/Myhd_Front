@@ -17,6 +17,7 @@ const OrderForm = () => {
     const [loading, setLoading] = useState(false);
     
     const [job, setJob] = useState([]);
+    
     const orderUrl = `/order/`;
 
     const Url = process.env.NEXT_PUBLIC_API_URL;
@@ -124,9 +125,8 @@ const OrderForm = () => {
                         <DataTable value={job} paginator showGridlines rows={10} loading={loading} dataKey="id" emptyMessage="No customers found.">
                             
                             <Column header="Prévisu" body={representativesItemTemplate} style={{ minWidth: '2rem' ,textAlign:'center'}} />
-
                             <Column header="Libellé" field="title" style={{textAlign:'center' ,whiteSpace: 'nowrap',overflow: 'hidden', textOverflow: 'ellipsis', maxWidth: '400px'}} />
-                            <Column header="type" field="product" style={{ minWidth: '8rem' ,textAlign:'center'}} />
+                            <Column header="Type" field="product" style={{ minWidth: '8rem' ,textAlign:'center'}} />
                             <Column header="Ref Commandes"  field="jobnumber" style={{ minWidth: '10rem' ,textAlign:'center'}} />
                             <Column header="N° Devis" field="estimateNumber" filterMenuStyle={{ width: '8rem' ,textAlign:'center'}}/>
                             <Column header="Quantité" body={quantityBodyTemplate} style={{ minWidth: '2rem' ,textAlign:'center' }} />

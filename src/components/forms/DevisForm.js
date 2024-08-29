@@ -116,7 +116,7 @@ const DevisForm = () => {
                 <div className="card">
                     <DataTable value={devis} paginator showGridlines rows={10} loading={loading} dataKey="id" emptyMessage="No customers found.">
                         <Column header="Prévisu" body={representativesItemTemplate} style={{ minWidth: '2rem' ,textAlign:'center'}} />
-                        <Column header="Type" style={{ minWidth: '2rem' ,textAlign:'center'}} />
+                        <Column header="Type" field="product" style={{ minWidth: '2rem' ,textAlign:'center'}} />
                         <Column header="Titre" field="quotetitle" style={{textAlign:'center' ,whiteSpace: 'nowrap',overflow: 'hidden', textOverflow: 'ellipsis', maxWidth: '400px'}} />
                         <Column header="N° devis"  body={numberDevisBodyTemplate} style={{ minWidth: '10rem' ,textAlign:'center'}} />
                         <Column header="Date de Création" dataType="date" body={dateBodyTemplate} style={{ minWidth: '10rem', textAlign:'center'}} />
