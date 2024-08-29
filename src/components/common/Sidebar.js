@@ -36,11 +36,15 @@ const Sidebar = () => {
           </div>
           {openDropdown === 1 && (
             <ul className={styles.dropdown}>
-              <Link href={`/catalogue`} passHref>
-                <li>MON CATALOGUE</li>
+              <Link href={`/catalogue`} passHref style={{ textDecoration: "none",color : "inherit" }}>
+                <li>Hd communication</li>
               </Link>
-              <li>Subcategory 2</li>
-              <li>Subcategory 3</li>
+              <Link href={`/catalogue`} passHref style={{ textDecoration: "none",color : "inherit" }}>
+                <li>Hd Dev informatique</li>
+              </Link>
+              <Link href={`/catalogue`} passHref style={{ textDecoration: "none",color : "inherit" }}>
+                <li>Hd Solution</li>
+              </Link>
             </ul>
           )}
         </div>
