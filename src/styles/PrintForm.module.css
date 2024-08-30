@@ -318,7 +318,7 @@
 }
 
 .blocks_by_line_8 .categoriesItem {
-  flex: 0 0 11.5% !important;
+  flex: 0 0 5.5% !important;
 }
 
 .categoriesItem {
@@ -331,8 +331,8 @@
 }
 
 .categoriesItem img {
-  width: 100px;
-  height: 100px;
+  width: 90px;
+  height: 90px;
   margin-right: 10px;
 }
 .categoriesItem label {
