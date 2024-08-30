@@ -72,16 +72,11 @@ const Sidebar = () => {
         <div className={styles.menuItem}>
           <div className={styles.menuItemTrigger}>
             <LuSettings2 />
-            <h3 onClick={() => toggleDropdown(4)}>MES PARAMÈTRES</h3>
+              <Link href={`/catalogue`} passHref style={{ textDecoration: "none",color : "inherit" }}>
+                <h3>MES NOUVEAUX PRODUITS</h3>
+              </Link>
             <IoIosArrowDown />
           </div>
-          {openDropdown === 4 && (
-            <ul className={styles.dropdown}>
-              <li>Subcategory 1</li>
-              <li>Subcategory 2</li>
-              <li>Subcategory 3</li>
-            </ul>
-          )}
         </div>
 
         <div className={styles.menuItem}>
