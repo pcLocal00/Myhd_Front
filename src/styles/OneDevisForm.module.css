@@ -1,0 +1,241 @@
+@font-face {
+  font-family: "Futura";
+  src: url("/fonts/Futura/FuturaPTBold.otf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
+  font-family: "Poppins";
+  src: url("/fonts/Poppins/Poppins-Regular.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+}
+.container {
+  display: flex;
+}
+.mainContainer {
+  display: flex;
+  flex-direction: column;
+  width: 83%;
+  width: 83%;
+  padding: 20px;
+}
+.middleContainer {
+  display: flex;
+  flex-direction: column;
+  padding: 30px;
+  margin: 0 30px;
+  border-radius: 15px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+.middleContainer h2 {
+  margin: 0px;
+}
+.middleContainer h3 {
+  font-family: Poppins;
+  font-size: 10px;
+  font-weight: 275;
+  line-height: 17px;
+  letter-spacing: 0.04em;
+  text-align: left;
+  color: #aba7a7;
+}
+.blueSpan ,.lightBlueSpan ,.darkBlueSpan ,.greenSpan ,.redSpan{
+  font-size: 12px;
+  color: white;
+  padding: 5px;
+  border-radius: 40px;
+}
+.darkBlueSpan {
+  background:  #634A8D;
+}
+.lightBlueSpan{
+  background:  #05A8CC;
+}
+.blueSpan{
+  background:  #0b51c4;
+}
+.greenSpan{
+  background:  #6DCD01;
+  display: flex; 
+  gap: 5px ;
+  align-items:center;
+}
+.redSpan{
+  display: flex; 
+  gap: 5px ;
+  align-items:center;
+  background:  #EF3333;
+}
+
+.headerContainer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.plusButton {
+  border-radius: 50%;
+  height: 35px;
+  width: 35px;
+  background: #05a8cc;
+  color: white;
+  font-size: 20px;
+  font-weight: 900;
+  border: 1px solid;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  padding: 0; /* Ensure no extra space is added */
+  line-height: 1; /* Adjust line height to center text vertically */
+}
+.pdfIcon {
+  font-size: 30px;
+  color: red;
+  text-align: center;
+}
+
+.closeButton ,
+.checkButton,
+.searchButton
+{
+  border-radius: 50%;
+  color: white;
+  font-size: 24px;
+  font-weight: 900;
+  width: 25px;
+  height: 25px;
+  margin: 0 2px;
+}
+.searchButton {
+  background: #0050EB; 
+}
+.checkButton{
+  background: #00BA00; 
+}
+.closeButton {
+  background: red;
+}
+.infoContainer{
+  display: flex;
+}
+.rightSide {
+  display: flex;
+  flex: 1 50%;
+  flex-direction: column;
+}
+.middleLine {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+}
+.Line {
+  width: 4px;
+  height: 100%;
+  background: #d9d9d9;
+}
+.labelContainer,
+.labelContainerDark {
+  display: flex;
+  padding: 15px;
+  border-radius: 10px;
+}
+.labelContainer label:first-child {
+  flex-basis: 40%;
+  color: #000000;
+  font-family: Poppins;
+  font-size: 10px;
+  font-weight: 700;
+  line-height: 17px;
+  letter-spacing: 0.04em;
+  text-align: left;
+}
+.labelContainerDark label:first-child {
+  flex-basis: 40%;
+  color: #000000;
+  font-family: Poppins;
+  font-size: 10px;
+  font-weight: 700;
+  line-height: 17px;
+  letter-spacing: 0.04em;
+  text-align: left;
+}
+.labelContainer label:last-child {
+  /* flex-basis: 60%; */
+  font-family: Poppins;
+  font-size: 10px;
+  font-weight: 500;
+  line-height: 17px;
+  letter-spacing: 0.04em;
+  text-align: left;
+  color: #8f8f8f;
+}
+.labelContainerDark label:last-child {
+  flex-basis: 60%;
+  font-family: Poppins;
+  font-size: 10px;
+  font-weight: 500;
+  line-height: 17px;
+  letter-spacing: 0.04em;
+  text-align: left;
+  color: #8f8f8f;
+}
+
+.labelContainerDark {
+  background: #f2f2f2;
+}
+.leftSide h4 {
+  font-family: Poppins;
+  font-size: 21px;
+  font-weight: 700;
+  line-height: 31.5px;
+  text-align: left;  
+  color: #000000 ;
+  margin:10px 0 0 0;
+}
+.leftSide ul li {
+  font-family: Poppins;
+  font-size: 10px;
+  font-weight: 400;
+  line-height: 15px;
+  text-align: left;
+  color: #B5B5B5 ;
+}
+.titleDevis{
+  margin: 0 !important;
+  font-family: Poppins !important;
+  font-size: 14px !important;
+  font-weight: 900 !important;
+  line-height: 17px !important;
+  letter-spacing: 0.04em !important;
+  text-align: left !important;
+}
+.labelContainer ul,.labelContainerDark ul {
+  margin: 0;
+}
+.labelContainer ul li,.labelContainerDark ul li{
+  margin: 0;
+  color: #634A8D;
+}
+.rightSide p{
+  margin :20px 0 0 0;
+  font-family: Poppins;
+  font-size: 11px;
+  font-weight: 500;
+
+}
+.rightSide label{
+  color: #05A8CC;
+  font-family: Poppins;
+  font-size: 14px;
+  font-weight: 500;
+  padding: 10px;
+  text-align: center;
+}
+.rightSide h3{
+  font-family: Poppins;
+  font-size: 16px;
+  font-weight: 900;
+  color: #000000;
+}

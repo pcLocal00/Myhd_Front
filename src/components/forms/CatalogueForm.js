@@ -178,56 +178,58 @@ const CatalogueForm = () => {
                     <div className={`${styles.menuItemTrigger} ${openDropdown === 2 ? 'open' : ''}`} onClick={() => toggleDropdown(2)}>
                         <div className={styles.menuItemsShowen}>
                             <div className={styles.menuItemHeader}>
-                            <h3>Hd Dev informatique</h3>
-                            <h4>Nos Articles en Vedette</h4>
+                                <h3>Hd Dev informatique</h3>
+                                <h4>Nos Articles en Vedette</h4>
                             </div>
                             <IoIosArrowDown />
                         </div>
                         <div className={styles.menuItemsHidden}>
                             {openDropdown === 2 && (
                                 <div className={styles.menuItemsWrapper}>
-                                    <div className={styles.menuItemWrapper}>
-                                        <Image
-                                            src="/images/Visit-card-2.png"
-                                            alt="Logo"
-                                            className={styles.logoImage}
-                                            width={147}
-                                            height={136}
-                                        /> 
-                                        <div className={styles.itemDetails}>
-                                            
-                                           <lable>Libellé</lable>  
-                                            <span>Carte de visite</span>
-                                        </div>
-                                        <div className={styles.itemDetails}>
-                                            
-                                           <lable>Type</lable> 
-                                            <span>Print</span>
-                                        </div>
-                                        <div className={styles.itemDetails}>
-                                            
-                                           <lable>Quantité</lable> 
-                                            <span>1500</span>
-                                        </div>
-                                        <div className={styles.itemDetails}>
-                                            
-                                           <lable>Date Cmd</lable> 
-                                            <span>18/05/2022</span>
-                                        </div>
-                                        <div className={styles.itemDetails}>
-                                            
-                                           <lable>Prix</lable> 
-                                            <span>100 €</span>
-                                        </div>
-                                        <div className={styles.itemDetails}>
-                                            
-                                            <lable>Prévisu</lable> 
-                                            <div className={styles.iconWrapper}>
-                                                <BsFiletypePdf className={styles.pdfIcon} />
-                                                <TbFileSearch className={styles.fileIcon} />
+                                    <Link href={`/infos`} passHref style={{ textDecoration: "none",color : "inherit"  }}>
+                                        <div className={styles.menuItemWrapper}>
+                                            <Image
+                                                src="/images/Visit-card-2.png"
+                                                alt="Logo"
+                                                className={styles.logoImage}
+                                                width={147}
+                                                height={136}
+                                            /> 
+                                            <div className={styles.itemDetails}>
+                                                
+                                            <lable>Libellé</lable>  
+                                                <span>Carte de visite</span>
                                             </div>
-                                        </div>
-                                    </div> 
+                                            <div className={styles.itemDetails}>
+                                                
+                                            <lable>Type</lable> 
+                                                <span>Print</span>
+                                            </div>
+                                            <div className={styles.itemDetails}>
+                                                
+                                            <lable>Quantité</lable> 
+                                                <span>1500</span>
+                                            </div>
+                                            <div className={styles.itemDetails}>
+                                                
+                                            <lable>Date Cmd</lable> 
+                                                <span>18/05/2022</span>
+                                            </div>
+                                            <div className={styles.itemDetails}>
+                                                
+                                            <lable>Prix</lable> 
+                                                <span>100 €</span>
+                                            </div>
+                                            <div className={styles.itemDetails}>
+                                                
+                                                <lable>Prévisu</lable> 
+                                                <div className={styles.iconWrapper}>
+                                                    <BsFiletypePdf className={styles.pdfIcon} />
+                                                    <TbFileSearch className={styles.fileIcon} />
+                                                </div>
+                                            </div>
+                                        </div> 
+                                    </Link>
                                     <div className={styles.menuItemWrapperDark}>
                                         <Image
                                             src="/images/Visit-card-2.png"

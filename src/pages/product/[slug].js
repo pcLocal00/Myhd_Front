@@ -6,6 +6,7 @@ import { useRouter } from "next/router";
 import styles from "../../styles/PrintForm.module.css";
 import Image from "next/image";
 import { useState } from "react";
+import "primereact/resources/themes/lara-light-cyan/theme.css";
 
 const ProductPage = () => {
     const router = useRouter();
@@ -30,7 +31,7 @@ const ProductPage = () => {
             <div className={styles.mainContainer}>
                 <Header />
                 <div className={styles.middleContainer}>
-                    <h2>Carte Visite</h2>
+                    <h2>{slug}</h2>
                     <h3>Nos Articles en Vedette</h3>
                     <div style={{ display: "flex" }}>
                         <div className={styles.imagesContainer}>
@@ -263,13 +264,33 @@ const ProductPage = () => {
                         <h5>Questions / Réponses</h5>
 
                         <div className={styles.questionsWrapper}>
-                            <div>
-                                <div>Lorem ipsum dolor sit amet, consectetur adipiscing elit ?</div>
-                                <div>Lorem ipsum dolor sit amet, consectetur adipiscing elit ?</div>
+                            <div className={styles.questionWrapper}>
+                                <div className={styles.question}>
+                                    <div style={{ display: "flex", justifyContent: "space-between" }}>
+                                        <div>Lorem ipsum dolor sit amet, consectetur adipiscing elit ?</div>
+                                        <div>+</div>
+                                    </div>
+                                </div>
+                                <div className={styles.question}>
+                                    <div style={{ display: "flex", justifyContent: "space-between" }}>
+                                        <div>Lorem ipsum dolor sit amet, consectetur adipiscing elit ?</div>
+                                        <div>+</div>
+                                    </div>
+                                </div>
                             </div>
-                            <div>
-                                <div>Lorem ipsum dolor sit amet, consectetur adipiscing elit ?</div>
-                                <div>Lorem ipsum dolor sit amet, consectetur adipiscing elit ?</div>
+                            <div className={styles.questionWrapper}>
+                                <div className={styles.question}>
+                                    <div style={{ display: "flex", justifyContent: "space-between" }}>
+                                        <div>Lorem ipsum dolor sit amet, consectetur adipiscing elit ?</div>
+                                        <div>+</div>
+                                    </div>
+                                </div>
+                                <div className={styles.question}>
+                                    <div style={{ display: "flex", justifyContent: "space-between" }}>
+                                        <div>Lorem ipsum dolor sit amet, consectetur adipiscing elit ?</div>
+                                        <div>+</div>
+                                    </div>
+                                </div>
                             </div>
                         </div>
 

@@ -4,7 +4,6 @@ import Header from "../common/Header";
 import RightSideBar from "../common/RightSideBar";
 import Sidebar from "../common/Sidebar";
 import Image from "next/image";
-import { TabView, TabPanel } from "primereact/tabview";
 import "primereact/resources/themes/lara-light-cyan/theme.css";
 import Link from "next/link";
 import { useState, useEffect } from "react";
@@ -14,7 +13,7 @@ const PrintForm = () => {
   const [categorie, setCategorie] = useState([]);
   const [openDropdown, setOpenDropdown] = useState(null);
   const [loading, setLoading] = useState(true);
-  const productUrl = '/'
+  const productUrl = '/product/lorem-ipsum'
   const Url = process.env.NEXT_PUBLIC_API_URL;
 
   useEffect(() => {
@@ -63,21 +62,24 @@ const PrintForm = () => {
                         data-nb-blocks-by-line={blocksPerLine}
                       >
                         {cat.categories.map((item) => (
+                           
                           <div key={item.id} className={styles.categoriesItem}>
-                              <Image
-                                src="/images/Visit-card-2.png"
-                                alt={item.title}
-                                className={styles.tfo}
-                                width={100}
-                                height={100}
-                              />
-                              <label>{item.title}</label>
-                              {item.SubCategory.map((sub) => (
-                                <div key={item.id} className={styles.SubCategory}>
-                                  <label>{sub.title}</label>
-                                </div>
-                              ))}
-                          </div>
+                                <Image
+                                  src="/images/Visit-card-2.png"
+                                  alt={item.title}
+                                  className={styles.tfo}
+                                  width={100}
+                                  height={100}
+                                />
+                                <Link href={productUrl} passHref style={{ textDecoration: "none", color: "inherit",cursor: "pointer" }}>
+                                  <label>{item.title}</label>
+                                </Link>
+                                {item.SubCategory.map((sub) => (
+                                  <div key={item.id} className={styles.SubCategory}>
+                                      <label>{sub.title}</label>
+                                  </div>
+                                ))}
+                            </div>
                         ))}
                       </div>
                     )}
@@ -86,8 +88,6 @@ const PrintForm = () => {
               })}
             </ul>
           </nav>
-
-
 
           <div className={styles.visitCard}>
             <div className={styles.cardWrappers}>
@@ -194,5 +194,3 @@ const PrintForm = () => {
   );
 };
 export default PrintForm;
-
-

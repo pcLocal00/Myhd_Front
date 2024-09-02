@@ -11,6 +11,7 @@ import "primereact/resources/themes/lara-light-cyan/theme.css";
 import { BsFiletypePdf } from "react-icons/bs";
 import { MdClose, MdCheck , MdSearch } from "react-icons/md";
 import axios from 'axios';
+import Link from "next/link";
 
 const DevisForm = () => {
 
@@ -81,7 +82,11 @@ const DevisForm = () => {
     };
 
     const numberDevisBodyTemplate = (rowData) => {
-        return <Tag value={rowData.quotenumber} severity={'renewal'} />;
+        return (
+            <Link href={`/devis/${rowData.id}`} passHref>
+                <Tag value={rowData.quotenumber} severity={'renewal'} />
+            </Link>
+        )
     };
 
     const representativesItemTemplate = () => {
@@ -106,26 +111,26 @@ const DevisForm = () => {
             <div className={styles.mainContainer}>
                 <Header />
                 <div className={styles.middleContainer}>
-                <div className={styles.headerContainer}>
-                    <div>
-                        <h2>Mes Devis en Cours</h2>
-                        <h3>Raccourcis Vers La Prise d’Action</h3>
+                    <div className={styles.headerContainer}>
+                        <div>
+                            <h2>Mes Devis en Cours</h2>
+                            <h3>Raccourcis Vers La Prise d’Action</h3>
+                        </div>
+                        <button className={styles.plusButton} id="plusButton" type="submit">+</button>
                     </div>
-                    <button className={styles.plusButton} id="plusButton" type="submit">+</button>
-                </div>
-                <div className="card">
-                    <DataTable value={devis} paginator showGridlines rows={10} loading={loading} dataKey="id" emptyMessage="No customers found.">
-                        <Column header="Prévisu" body={representativesItemTemplate} style={{ minWidth: '2rem' ,textAlign:'center'}} />
-                        <Column header="Type" field="product" style={{ minWidth: '2rem' ,textAlign:'center'}} />
-                        <Column header="Titre" field="quotetitle" style={{textAlign:'center' ,whiteSpace: 'nowrap',overflow: 'hidden', textOverflow: 'ellipsis', maxWidth: '400px'}} />
-                        <Column header="N° devis"  body={numberDevisBodyTemplate} style={{ minWidth: '10rem' ,textAlign:'center'}} />
-                        <Column header="Date de Création" dataType="date" body={dateBodyTemplate} style={{ minWidth: '10rem', textAlign:'center'}} />
-                        <Column header="Quantité-Prix" field="status" filterMenuStyle={{ width: '14rem' }} style={{ minWidth: '12rem' }}/>
-                        <Column header="Délai(J)" body={durationBodyTemplate} style={{ minWidth: '2rem' ,textAlign:'center' }} />
-                        <Column header="État" field="quotestatus" dataType="boolean" body={statusBodyTemplate} bodyClassName="text-center" style={{ minWidth: '8rem' ,textAlign:'center'}} />
-                        <Column header="Actions" bodyClassName="text-center" style={{ minWidth: '8rem' }} body={actionBodyTemplate} />
-                    </DataTable>
-                </div>
+                    <div className="card">
+                        <DataTable value={devis} paginator showGridlines rows={10} loading={loading} dataKey="id" emptyMessage="No customers found.">
+                            <Column header="Prévisu" body={representativesItemTemplate} style={{ minWidth: '2rem' ,textAlign:'center'}} />
+                            <Column header="Type" field="product" style={{ minWidth: '2rem' ,textAlign:'center'}} />
+                            <Column header="Titre" field="quotetitle" style={{textAlign:'center' ,whiteSpace: 'nowrap',overflow: 'hidden', textOverflow: 'ellipsis', maxWidth: '400px'}} />
+                            <Column header="N° devis"  body={numberDevisBodyTemplate} style={{ minWidth: '10rem' ,textAlign:'center'}} />
+                            <Column header="Date de Création" dataType="date" body={dateBodyTemplate} style={{ minWidth: '10rem', textAlign:'center'}} />
+                            <Column header="Quantité-Prix" field="status" filterMenuStyle={{ width: '14rem' }} style={{ minWidth: '12rem' }}/>
+                            <Column header="Délai(J)" body={durationBodyTemplate} style={{ minWidth: '2rem' ,textAlign:'center' }} />
+                            <Column header="État" field="quotestatus" dataType="boolean" body={statusBodyTemplate} bodyClassName="text-center" style={{ minWidth: '8rem' ,textAlign:'center'}} />
+                            <Column header="Actions" bodyClassName="text-center" style={{ minWidth: '8rem' }} body={actionBodyTemplate} />
+                        </DataTable>
+                    </div>
                 </div>
             </div>
         </div>
