@@ -118,8 +118,8 @@ const HomeForm = () => {
             <h2>Hd communication</h2>
             <h6>Nos Articles en Vedette</h6>
             <div className={styles.menuItem}>
-              <div className={styles.menuItemTrigger}>
-                <h3 onClick={() => toggleDropdown(1)}>Edition & Print</h3>
+              <div className={styles.menuItemTrigger} onClick={() => toggleDropdown(1)}>
+                <h3 >Edition & Print</h3>
                 <IoIosArrowDown />
               </div>
               {openDropdown === 1 && (
@@ -131,10 +131,8 @@ const HomeForm = () => {
               )}
             </div>
             <div className={styles.menuItem}>
-              <div className={styles.menuItemTrigger}>
-                <h3 onClick={() => toggleDropdown(2)}>
-                  Développement Sites Web
-                </h3>
+              <div className={styles.menuItemTrigger} onClick={() => toggleDropdown(2)}>
+                <h3 > Développement Sites Web </h3>
                 <IoIosArrowDown />
               </div>
               {openDropdown === 2 && (
@@ -146,10 +144,8 @@ const HomeForm = () => {
               )}
             </div>
             <div className={styles.menuItem}>
-              <div className={styles.menuItemTrigger}>
-                <h3 onClick={() => toggleDropdown(3)}>
-                  Communication Digitale
-                </h3>
+              <div className={styles.menuItemTrigger} onClick={() => toggleDropdown(3)}>
+                <h3 > Communication Digitale </h3>
                 <IoIosArrowDown />
               </div>
               {openDropdown === 3 && (
@@ -161,8 +157,8 @@ const HomeForm = () => {
               )}
             </div>
             <div className={styles.menuItem}>
-              <div className={styles.menuItemTrigger}>
-                <h3 onClick={() => toggleDropdown(4)}>Expérience Client</h3>
+              <div className={styles.menuItemTrigger} onClick={() => toggleDropdown(4)}>
+                <h3 >Expérience Client</h3>
                 <IoIosArrowDown />
               </div>
               {openDropdown === 4 && (
@@ -178,10 +174,8 @@ const HomeForm = () => {
             <h2>Hd Dev informatique</h2>
             <h6>Nos Articles en Vedette</h6>
             <div className={styles.menuItem}>
-              <div className={styles.menuItemTrigger}>
-                <h3 onClick={() => toggleDropdown(5)}>
-                  Développement d’applications mobile et web
-                </h3>
+              <div className={styles.menuItemTrigger} onClick={() => toggleDropdown(5)}>
+                <h3> Développement d’applications mobile et web </h3>
                 <IoIosArrowDown />
               </div>
               {openDropdown === 5 && (
@@ -193,8 +187,8 @@ const HomeForm = () => {
               )}
             </div>
             <div className={styles.menuItem}>
-              <div className={styles.menuItemTrigger}>
-                <h3 onClick={() => toggleDropdown(6)}>Analyse des données</h3>
+              <div className={styles.menuItemTrigger} onClick={() => toggleDropdown(6)}>
+                <h3 >Analyse des données</h3>
                 <IoIosArrowDown />
               </div>
               {openDropdown === 6 && (
@@ -206,10 +200,8 @@ const HomeForm = () => {
               )}
             </div>
             <div className={styles.menuItem}>
-              <div className={styles.menuItemTrigger}>
-                <h3 onClick={() => toggleDropdown(7)}>
-                  Automatisation Business
-                </h3>
+              <div className={styles.menuItemTrigger} onClick={() => toggleDropdown(7)}>
+                <h3 > Automatisation Business </h3>
                 <IoIosArrowDown />
               </div>
               {openDropdown === 7 && (
@@ -221,8 +213,8 @@ const HomeForm = () => {
               )}
             </div>
             <div className={styles.menuItem}>
-              <div className={styles.menuItemTrigger}>
-                <h3 onClick={() => toggleDropdown(8)}>Business Intelligence</h3>
+              <div className={styles.menuItemTrigger} onClick={() => toggleDropdown(8)}>
+                <h3>Business Intelligence</h3>
                 <IoIosArrowDown />
               </div>
               {openDropdown === 8 && (
@@ -234,8 +226,8 @@ const HomeForm = () => {
               )}
             </div>
             <div className={styles.menuItem}>
-              <div className={styles.menuItemTrigger}>
-                <h3 onClick={() => toggleDropdown(9)}>
+              <div className={styles.menuItemTrigger} onClick={() => toggleDropdown(9)}>
+                <h3 >
                   Hébergement Maintenance
                 </h3>
                 <IoIosArrowDown />
@@ -249,8 +241,8 @@ const HomeForm = () => {
               )}
             </div>
             <div className={styles.menuItem}>
-              <div className={styles.menuItemTrigger}>
-                <h3 onClick={() => toggleDropdown(10)}>Cloud</h3>
+              <div className={styles.menuItemTrigger} onClick={() => toggleDropdown(10)}>
+                <h3 >Cloud</h3>
                 <IoIosArrowDown />
               </div>
               {openDropdown === 10 && (

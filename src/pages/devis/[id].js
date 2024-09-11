@@ -150,7 +150,7 @@ const OrderPage = () => {
                         <div className={styles.rightSide}>
                             <p ><b style={{fontWeight : "900"}}>Description :</b> Reprise des element du devis version 1 et 2 en rajoutant les elements </p>
                             <p >
-                                Cahier des charges complet de dev et documentation technique  Mise en place d un CRM et ERP  
+                                Cahier des charges complet de dev et documentation technique  Mise en place d un CRM et ERP 
                                 relattion client et gestion Client devis commande facturation communication complet  
                                 complet des realtion client Mail Tableau de bord et des satistiques Mise en place 
                                 pour la gestion complet des reseaux sociaux Mise en place des outil Ia pourla 

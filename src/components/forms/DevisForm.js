@@ -120,15 +120,15 @@ const DevisForm = () => {
                     </div>
                     <div className="card">
                         <DataTable value={devis} paginator showGridlines rows={10} loading={loading} dataKey="id" emptyMessage="No customers found.">
-                            <Column header="Prévisu" body={representativesItemTemplate} style={{ minWidth: '2rem' ,textAlign:'center'}} />
-                            <Column header="Type" field="product" style={{ minWidth: '2rem' ,textAlign:'center'}} />
-                            <Column header="Titre" field="quotetitle" style={{textAlign:'center' ,whiteSpace: 'nowrap',overflow: 'hidden', textOverflow: 'ellipsis', maxWidth: '400px'}} />
-                            <Column header="N° devis"  body={numberDevisBodyTemplate} style={{ minWidth: '10rem' ,textAlign:'center'}} />
-                            <Column header="Date de Création" dataType="date" body={dateBodyTemplate} style={{ minWidth: '10rem', textAlign:'center'}} />
-                            <Column header="Quantité-Prix" field="status" filterMenuStyle={{ width: '14rem' }} style={{ minWidth: '12rem' }}/>
-                            <Column header="Délai(J)" body={durationBodyTemplate} style={{ minWidth: '2rem' ,textAlign:'center' }} />
-                            <Column header="État" field="quotestatus" dataType="boolean" body={statusBodyTemplate} bodyClassName="text-center" style={{ minWidth: '8rem' ,textAlign:'center'}} />
-                            <Column header="Actions" bodyClassName="text-center" style={{ minWidth: '8rem' }} body={actionBodyTemplate} />
+                            <Column header="Prévisu" body={representativesItemTemplate} style={{ minWidth: '2rem' ,textAlign:'center',fontSize:'12px'}} />
+                            <Column header="Type" field="product" style={{ minWidth: '2rem' ,textAlign:'center' ,fontSize:'12px'}} />
+                            <Column header="Titre" field="quotetitle" style={{textAlign:'center' ,whiteSpace: 'nowrap',overflow: 'hidden', textOverflow: 'ellipsis', maxWidth: '400px',fontSize:'12px'}} />
+                            <Column header="N° devis"  body={numberDevisBodyTemplate} style={{ minWidth: '10rem' ,textAlign:'center',fontSize:'12px'}} />
+                            <Column header="Date de Création" dataType="date" body={dateBodyTemplate} style={{ minWidth: '8rem', textAlign:'center',fontSize:'12px'}} />
+                            <Column header="Quantité-Prix" field="status" filterMenuStyle={{ width: '14rem' }} style={{ minWidth: '12rem',fontSize:'12px'}}/>
+                            <Column header="Délai(J)" body={durationBodyTemplate} style={{ minWidth: '2rem' ,textAlign:'center',fontSize:'12px'}} />
+                            <Column header="État" field="quotestatus" dataType="boolean" body={statusBodyTemplate} bodyClassName="text-center" style={{ minWidth: '8rem' ,textAlign:'center',fontSize:'12px'}} />
+                            <Column header="Actions" bodyClassName="text-center" style={{ minWidth: '8rem' ,fontSize:'12px',textAlign:'center'}} body={actionBodyTemplate} />
                         </DataTable>
                     </div>
                 </div>

@@ -75,11 +75,11 @@ const OrderForm = () => {
     };
 
     const statusBodyTemplate = (rowData) => {
-        return <Tag value={rowData.code} severity={getSeverity(rowData.code)} />;
+        return <Tag value={rowData.code} severity={getSeverity(rowData.code)} style={{fontSize:"10px"}}/>;
     };
 
     const quantityBodyTemplate = (rowData) => {
-        return <Tag value={rowData.quantity} severity={getSeverity(rowData.quantity)} />;
+        return <Tag value={rowData.quantity} severity={getSeverity(rowData.quantity)} style={{fontSize:"10px"}} />;
     };
 
     const representativesItemTemplate = (rowData) => {
@@ -93,18 +93,18 @@ const OrderForm = () => {
     const actionBodyTemplate = () =>{
         return(
             <div>
-                <MdCheck className={styles.checkButton}/>
-                <MdClose className={styles.closeButton}/>
-                <MdSearch className={styles.searchButton}/>
+                <MdCheck className={styles.checkButton} style={{width: "20px", height: "20px"}}/>
+                <MdClose className={styles.closeButton} style={{width: "20px", height: "20px"}}/>
+                <MdSearch className={styles.searchButton} style={{width: "20px", height: "20px"}}/>
             </div>
         );
     }
 
     const verifiedBodyTemplate = (rowData) => {
         return rowData.statecode === "BAT_AEL" ? (
-            <MdCheck className={styles.checkButton} />
+            <MdCheck className={styles.checkButton} style={{width: "20px", height: "20px"}}/>
         ) : (
-            <MdClose className={styles.closeButton} />
+            <MdClose className={styles.closeButton} style={{width: "20px", height: "20px"}}/>
         );
     };
 
@@ -124,18 +124,18 @@ const OrderForm = () => {
                     <div className="card">
                         <DataTable value={job} paginator showGridlines rows={10} loading={loading} dataKey="id" emptyMessage="No customers found.">
                             
-                            <Column header="Prévisu" body={representativesItemTemplate} style={{ minWidth: '2rem' ,textAlign:'center'}} />
-                            <Column header="Libellé" field="title" style={{textAlign:'center' ,whiteSpace: 'nowrap',overflow: 'hidden', textOverflow: 'ellipsis', maxWidth: '400px'}} />
-                            <Column header="Type" field="product" style={{ minWidth: '8rem' ,textAlign:'center'}} />
-                            <Column header="Ref Commandes"  field="jobnumber" style={{ minWidth: '10rem' ,textAlign:'center'}} />
-                            <Column header="N° Devis" field="estimateNumber" filterMenuStyle={{ width: '8rem' ,textAlign:'center'}}/>
-                            <Column header="Quantité" body={quantityBodyTemplate} style={{ minWidth: '2rem' ,textAlign:'center' }} />
-                            <Column header="Date Cmd" field="date" dataType="boolean" bodyClassName="text-center" style={{ minWidth: '8rem' ,textAlign:'center'}} />
-                            <Column header="Etat BAT" body={verifiedBodyTemplate} bodyClassName="text-center" style={{ minWidth: '2rem' ,textAlign:'center'}}  />
-                            <Column header="Date BAT" dataType="date" body={dateBodyTemplate} style={{ minWidth: '8rem', textAlign:'center'}} />
-                            <Column header="Liv Provisoire" dataType="date" body={dateBodyTemplate} style={{ minWidth: '8rem', textAlign:'center'}} />
-                            <Column header="Statu" body={statusBodyTemplate} bodyClassName="text-center" style={{ minWidth: '8rem' }} />
-                            <Column header="Actions" bodyClassName="text-center" style={{ minWidth: '8rem' }} body={actionBodyTemplate} />
+                            <Column header="Prévisu" body={representativesItemTemplate} style={{fontSize:'12px', minWidth: '2rem' ,textAlign:'center'}} />
+                            <Column header="Libellé" field="title" style={{fontSize:'12px',textAlign:'center' ,whiteSpace: 'nowrap',overflow: 'hidden', textOverflow: 'ellipsis', maxWidth: '200px'}} />
+                            <Column header="Type" field="product" style={{fontSize:'12px', minWidth: '8rem' ,textAlign:'center'}} />
+                            <Column header="Ref Commandes"  field="jobnumber" style={{fontSize:'12px', minWidth: '8rem' ,textAlign:'center'}} />
+                            <Column header="N° Devis" field="estimateNumber" style={{fontSize:'12px', width: '8rem' ,textAlign:'center'}}/>
+                            <Column header="Quantité" body={quantityBodyTemplate} style={{fontSize:'12px', minWidth: '2rem' ,textAlign:'center' }} />
+                            <Column header="Date Cmd" field="date" dataType="boolean" bodyClassName="text-center" style={{fontSize:'12px', minWidth: '6.5rem' ,textAlign:'center'}} />
+                            <Column header="Etat BAT" body={verifiedBodyTemplate} bodyClassName="text-center" style={{fontSize:'12px', minWidth: '2rem' ,textAlign:'center'}}  />
+                            <Column header="Date BAT" dataType="date" body={dateBodyTemplate} style={{fontSize:'12px', minWidth: '6.5rem', textAlign:'center'}} />
+                            <Column header="Liv Provisoire" dataType="date" body={dateBodyTemplate} style={{fontSize:'12px', minWidth: '6.5rem', textAlign:'center'}} />
+                            <Column header="Statu" body={statusBodyTemplate} bodyClassName="text-center" style={{fontSize:'12px', minWidth: '8rem' }} />
+                            <Column header="Actions" bodyClassName="text-center" style={{fontSize:'12px', minWidth: '7rem' }} body={actionBodyTemplate} />
                         </DataTable>
                     </div>
                 </div>

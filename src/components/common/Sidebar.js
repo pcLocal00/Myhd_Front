@@ -20,18 +20,31 @@ const Sidebar = () => {
 
   return (
     <div className={styles.sidebar}>
-      <Image
-        src="/images/Logo-sidebar.png"
-        alt="Logo"
-        className={styles.logoImage}
-        width={160}
-        height={50}
-      />
+      <Link href={`/`} passHref style={{ textDecoration: "none",color : "inherit",margin:"0 auto" }} >
+        <Image
+          src="/images/Logo-sidebar.png"
+          alt="Logo"
+          className={styles.logoImage}
+          width={160}
+          height={50}
+        />
+      </Link>
       <div className={styles.menuItems}>
+
         <div className={styles.menuItem}>
           <div className={styles.menuItemTrigger}>
+            <LuSettings2 />
+              <Link href={`/print`} passHref style={{ textDecoration: "none",color : "inherit" }}>
+                <h3>MES NOUVEAUX PRODUITS</h3>
+              </Link>
+            <IoIosArrowDown />
+          </div>
+        </div>
+
+        <div className={styles.menuItem}>
+          <div className={styles.menuItemTrigger} onClick={() => toggleDropdown(1)}>
             <ImBooks />
-            <h3 onClick={() => toggleDropdown(1)}>MON CATALOGUE</h3>
+            <h3>MON CATALOGUE</h3>
             <IoIosArrowDown />
           </div>
           {openDropdown === 1 && (
@@ -70,19 +83,9 @@ const Sidebar = () => {
         </div>
 
         <div className={styles.menuItem}>
-          <div className={styles.menuItemTrigger}>
-            <LuSettings2 />
-              <Link href={`/catalogue`} passHref style={{ textDecoration: "none",color : "inherit" }}>
-                <h3>MES NOUVEAUX PRODUITS</h3>
-              </Link>
-            <IoIosArrowDown />
-          </div>
-        </div>
-
-        <div className={styles.menuItem}>
-          <div className={styles.menuItemTrigger}>
+          <div className={styles.menuItemTrigger} onClick={() => toggleDropdown(5)}>
             <ImStatsDots />
-            <h3 onClick={() => toggleDropdown(5)}>MON TABLEAU DE BORD</h3>
+            <h3>MON TABLEAU DE BORD</h3>
             <IoIosArrowDown />
           </div>
           {openDropdown === 5 && (
@@ -95,9 +98,9 @@ const Sidebar = () => {
         </div>
 
         <div className={styles.menuItem}>
-          <div className={styles.menuItemTrigger}>
+          <div className={styles.menuItemTrigger} onClick={() => toggleDropdown(6)}>
             <MdOutlineHelpOutline />
-            <h3 onClick={() => toggleDropdown(6)}>AIDE</h3>
+            <h3>AIDE</h3>
             <IoIosArrowDown />
           </div>
           {openDropdown === 6 && (
