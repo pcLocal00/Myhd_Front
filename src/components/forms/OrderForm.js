@@ -1,19 +1,23 @@
 /* eslint-disable react-hooks/rules-of-hooks */
 /* eslint-disable react/no-unescaped-entities */
+import React, { useState, useEffect } from 'react';
 import styles from "../../styles/OrderForm.module.css";
 import Header from "../common/Header";
 import Sidebar from "../common/Sidebar";
-import React, { useState, useEffect } from 'react';
-import { classNames } from 'primereact/utils';
+import axios from "axios";
+import Link from "next/link";
 import { DataTable } from 'primereact/datatable';
 import { Column } from 'primereact/column';
 import { Tag } from 'primereact/tag';
-import "primereact/resources/themes/lara-light-cyan/theme.css";
 import { ImFilePicture } from "react-icons/im";
 import { MdClose, MdCheck , MdSearch } from "react-icons/md";
-import Link from "next/link";
-import axios from "axios";
 import { Dialog } from "primereact/dialog";
+import { Button } from 'primereact/button';
+import { ButtonGroup } from 'primereact/buttongroup';
+import 'primereact/resources/primereact.css';
+import 'primereact/resources/themes/lara-light-indigo/theme.css';
+import 'primeicons/primeicons.css';
+
 
 const OrderForm = () => {
     const [loading, setLoading] = useState(false);
@@ -202,9 +206,9 @@ const OrderForm = () => {
                             <div>
                                 <p>Are you sure you want to {modalType === 'accept' ? 'accept' : 'cancel'} this N°  {selectedRow.estimateNumber}?</p>
                             </div>
-                            <div>
-                                <button className="btn btn-primary" onClick={handleConfirm}>Confirm</button>
-                                <button className="btn btn-secondary" onClick={() => setShowModal(false)}>Close</button>
+                            <div style={{display:"flex" ,justifyContent:"flex-end"}}>
+                                <Button onClick={handleConfirm} label="Confirm" severity="success" icon="pi pi-check" style={{marginRight:"10px"}}/>
+                                <Button onClick={() => setShowModal(false)} label="Close" severity="danger" icon="pi pi-times" />
                             </div>
                         </Dialog>
                     )}
