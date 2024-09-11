@@ -12,8 +12,7 @@ import { DataTable } from 'primereact/datatable';
 import { Column } from 'primereact/column';
 import { InputSwitch } from 'primereact/inputswitch';
 import axios from 'axios';
-import "primereact/resources/themes/lara-light-cyan/theme.css";
-
+import 'primereact/resources/themes/lara-light-indigo/theme.css';
 
 const OrderPage = () => {
     const router = useRouter();
@@ -29,11 +28,13 @@ const OrderPage = () => {
         const fetchCommande = async () => {
           try {
             const response = await axios.get(`${Url}/job/${id}`);
-            setCommande(response.data);
+            console.log(response.data['commande']);
+            setCommande(response.data['commande']);
           } catch (error) {
             console.error('Error fetching Commande:', error);
           } finally {
             setLoading(false);
+            
           }
         };
         if (id) {
@@ -48,9 +49,10 @@ const OrderPage = () => {
             <div className={styles.mainContainerOrder}>
                 <Header />
                 <div className={styles.middleContainer}>
-                    <h2>{id}</h2>
+                    <h2>{commande?.jobnumber}</h2>
                     <h3>Raccourcis Vers La Prise d’Action</h3>
                     <TabView>
+
                         <TabPanel header="information">
                             <div className={styles.infoContainer}>
                                 <div className={styles.leftSide}>
@@ -201,9 +203,10 @@ const OrderPage = () => {
                                 </div>
                             </div>
                         </TabPanel>
+
                         <TabPanel header="Documents Attachés">
                             <div className="card">
-                                <DataTable value={commande} paginator showGridlines rows={10} loading={loading} dataKey="id" emptyMessage="No customers found.">
+                                <DataTable value={Array.isArray(commande)? commande : []} paginator showGridlines rows={10} loading={loading} dataKey="id" emptyMessage="No customers found.">
                                     <Column header="Noms du projets" style={{ minWidth: '2rem' ,textAlign:'center'}} />
                                     <Column header="Type" style={{ minWidth: '2rem' ,textAlign:'center'}} />
                                     <Column header="Date de Création" dataType="date" style={{ minWidth: '10rem', textAlign:'center'}} />
@@ -215,10 +218,11 @@ const OrderPage = () => {
                                 </DataTable>
                             </div>
                         </TabPanel>
+
                         <TabPanel header="Adresses D’Expédition">
 
                             <div className="card">
-                                <DataTable value={commande} paginator showGridlines rows={10} loading={loading} dataKey="id" emptyMessage="No customers found.">
+                                <DataTable value={Array.isArray(commande)? commande : []} paginator showGridlines rows={10} loading={loading} dataKey="id" emptyMessage="No customers found.">
                                     <Column header="Adresse" style={{ minWidth: '2rem' ,textAlign:'center'}} />
                                     <Column header="Quantité" style={{ minWidth: '2rem' ,textAlign:'center'}} />
                                     <Column header="N°BL" dataType="date" style={{ minWidth: '10rem', textAlign:'center'}} />
@@ -230,6 +234,7 @@ const OrderPage = () => {
                                 </DataTable>
                             </div>
                         </TabPanel>
+
                         <TabPanel header="Commentaires">
                             <div className={styles.commentSection}>
                                 <h4>Nouveau Commentaires</h4>
@@ -251,7 +256,7 @@ const OrderPage = () => {
 
                                 <h4>Historique des commentaires</h4>
                                 <div className="card">
-                                    <DataTable value={commande} paginator showGridlines rows={10} loading={loading} dataKey="id" emptyMessage="No customers found.">
+                                    <DataTable value={Array.isArray(commande)? commande : []} paginator showGridlines rows={10} loading={loading} dataKey="id" emptyMessage="No customers found.">
                                         <Column header="Date" style={{ minWidth: '2rem' ,textAlign:'center'}} />
                                         <Column header="Label" style={{ minWidth: '2rem' ,textAlign:'center'}} />
                                         <Column header="Utilisateur" dataType="date" style={{ minWidth: '10rem', textAlign:'center'}} />
@@ -261,9 +266,10 @@ const OrderPage = () => {
                                 </div>
                             </div>
                         </TabPanel>
+
                         <TabPanel header="Historique">
                             <div className="card">
-                                <DataTable value={commande} paginator showGridlines rows={10} loading={loading} dataKey="id" emptyMessage="No customers found.">
+                                <DataTable value={Array.isArray(commande)? commande : []} paginator showGridlines rows={10} loading={loading} dataKey="id" emptyMessage="No customers found.">
                                     <Column header="Type d’événement" style={{ minWidth: '2rem' ,textAlign:'center'}} />
                                     <Column header="Date d’événement" style={{ minWidth: '2rem' ,textAlign:'center'}} />
                                     <Column header="Contenu" dataType="date" style={{ minWidth: '10rem', textAlign:'center'}} />
@@ -271,6 +277,7 @@ const OrderPage = () => {
                                 </DataTable>
                             </div>
                         </TabPanel>
+
                     </TabView>
                 </div>
             </div>

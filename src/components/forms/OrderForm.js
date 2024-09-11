@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/rules-of-hooks */
 /* eslint-disable react/no-unescaped-entities */
 import styles from "../../styles/OrderForm.module.css";
 import Header from "../common/Header";
@@ -12,14 +13,16 @@ import { ImFilePicture } from "react-icons/im";
 import { MdClose, MdCheck , MdSearch } from "react-icons/md";
 import Link from "next/link";
 import axios from "axios";
+import { Dialog } from "primereact/dialog";
 
 const OrderForm = () => {
     const [loading, setLoading] = useState(false);
-    
     const [job, setJob] = useState([]);
+    const [showModal, setShowModal] = useState(false);
+    const [modalType, setModalType] = useState('');
+    const [selectedRow, setSelectedRow] = useState(null);
     
     const orderUrl = `/order/`;
-
     const Url = process.env.NEXT_PUBLIC_API_URL;
 
     useEffect(() => {
@@ -74,8 +77,34 @@ const OrderForm = () => {
         return formatDate(rowData.expeditionprevuedate);
     };
 
+    const getSeverityStatus = (code) => {
+        switch (code) {
+            case 'WORK_IN_PROGRESS':
+                return 'success';
+            case 'DELIVERED_NOT_INVOICED':
+                return 'default';
+            case 'INVOICED':
+                return 'danger';
+            case 'DISPATCH':
+                return 'warning';
+            case 'PRE_IN_PROGRESS':
+                return 'primary';
+            case 'CANCELLED':
+                return 'danger';
+            default:
+                return 'info';
+        }
+    };
+    
     const statusBodyTemplate = (rowData) => {
-        return <Tag value={rowData.code} severity={getSeverity(rowData.code)} style={{fontSize:"10px"}}/>;
+        return (
+            <Tag
+                value={rowData.namestatus} 
+                severity={getSeverityStatus(rowData.code)} 
+                style={{ fontSize: "10px" }}
+            />
+
+        );
     };
 
     const quantityBodyTemplate = (rowData) => {
@@ -84,21 +113,46 @@ const OrderForm = () => {
 
     const representativesItemTemplate = (rowData) => {
         return (
-            <Link href={`${orderUrl}${rowData.jobnumber}`} passHref>
+            <Link href={`${orderUrl}${rowData.idjob}`} passHref>
                 <ImFilePicture className={styles.pictureIcon}/>
             </Link>
         );
     };
 
-    const actionBodyTemplate = () =>{
-        return(
+    const handleActionClick = (rowData, type) => {
+        setModalType(type);
+        setSelectedRow(rowData); 
+        setShowModal(true); 
+    };
+
+    const handleConfirm = () => {
+        if (modalType === 'accept') {
+            console.log('Accept action for', selectedRow);
+        } else {
+            console.log('Cancel action for', selectedRow);
+        }
+        setShowModal(false);
+    };
+
+    const actionBodyTemplate = (rowData) => {
+        return (
             <div>
-                <MdCheck className={styles.checkButton} style={{width: "20px", height: "20px"}}/>
-                <MdClose className={styles.closeButton} style={{width: "20px", height: "20px"}}/>
-                <MdSearch className={styles.searchButton} style={{width: "20px", height: "20px"}}/>
+                {(rowData.code === 'CANCELLED' || rowData.code === 'INVOICED') ? (
+                    <Link href={`${orderUrl}${rowData.idjob}`} passHref>
+                        <MdSearch className={styles.searchButton} style={{ width: "20px", height: "20px" }} />
+                    </Link>
+                ) : (
+                    <>
+                        <MdCheck className={styles.checkButton} style={{ width: "20px", height: "20px" }} onClick={() => handleActionClick(rowData, 'accept')}/>
+                        <MdClose className={styles.closeButton} style={{ width: "20px", height: "20px" }} onClick={() => handleActionClick(rowData, 'cancel')}/>
+                        <Link href={`${orderUrl}${rowData.idjob}`} passHref>
+                            <MdSearch className={styles.searchButton} style={{ width: "20px", height: "20px" }} />
+                        </Link>
+                    </>
+                )}
             </div>
         );
-    }
+    };
 
     const verifiedBodyTemplate = (rowData) => {
         return rowData.statecode === "BAT_AEL" ? (
@@ -135,9 +189,25 @@ const OrderForm = () => {
                             <Column header="Date BAT" dataType="date" body={dateBodyTemplate} style={{fontSize:'12px', minWidth: '6.5rem', textAlign:'center'}} />
                             <Column header="Liv Provisoire" dataType="date" body={dateBodyTemplate} style={{fontSize:'12px', minWidth: '6.5rem', textAlign:'center'}} />
                             <Column header="Statu" body={statusBodyTemplate} bodyClassName="text-center" style={{fontSize:'12px', minWidth: '8rem' }} />
-                            <Column header="Actions" bodyClassName="text-center" style={{fontSize:'12px', minWidth: '7rem' }} body={actionBodyTemplate} />
+                            <Column header="Actions" bodyClassName="text-center" style={{fontSize:'12px', minWidth: '7rem', textAlign:'center'}} body={actionBodyTemplate} />
                         </DataTable>
                     </div>
+                    {showModal && (
+                        <Dialog header={modalType === 'accept' ? 'Confirm Acceptance' : 'Confirm Cancellation'}
+                            visible={showModal}
+                            className="custom-dialog"
+                            style={{ width: '50vw' }}
+                            modal
+                            onHide={() => setShowModal(false)}>
+                            <div>
+                                <p>Are you sure you want to {modalType === 'accept' ? 'accept' : 'cancel'} this N°  {selectedRow.estimateNumber}?</p>
+                            </div>
+                            <div>
+                                <button className="btn btn-primary" onClick={handleConfirm}>Confirm</button>
+                                <button className="btn btn-secondary" onClick={() => setShowModal(false)}>Close</button>
+                            </div>
+                        </Dialog>
+                    )}
                 </div>
             </div>
         </div>

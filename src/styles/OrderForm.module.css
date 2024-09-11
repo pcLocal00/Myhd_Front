@@ -237,3 +237,19 @@
   border-radius: 10px;
   width: fit-content;
 }
+
+.custom-dialog .p-dialog {
+  background: rgba(255, 255, 255, 0.1); /* Makes the background slightly transparent */
+  backdrop-filter: blur(10px); /* Applies the blur effect */
+  box-shadow: none; /* Optionally remove box-shadow for cleaner look */
+}
+
+.custom-dialog .p-dialog-content {
+  background: rgba(255, 255, 255, 0.3); /* Adjust content background transparency */
+  backdrop-filter: blur(15px); /* Blur for the content inside */
+  border-radius: 10px; /* Optional: Add rounded corners */
+}
+
+.custom-dialog .p-dialog-header {
+  background: transparent; /* Make header transparent */
+}
