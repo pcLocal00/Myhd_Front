@@ -1,0 +1,15 @@
+
+.container{
+    margin-top: 6rem;
+    display: flex;
+    justify-content: space-between;
+
+}
+.card {
+    background: var(--surface-card);
+    border: 1px solid var(--surface-border);
+    padding: 2rem;
+    margin-bottom: 2rem;
+    box-shadow: var(--card-shadow);
+    border-radius: 12px;
+}

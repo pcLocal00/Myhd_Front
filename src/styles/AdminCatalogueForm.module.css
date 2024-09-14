@@ -1,0 +1,36 @@
+
+.container{
+  margin-top: 6rem;
+  display: flex;
+  justify-content: space-between;
+
+}
+.card {
+  background: var(--surface-card);
+  border: 1px solid var(--surface-border);
+  padding: 2rem;
+  margin-bottom: 2rem;
+  box-shadow: var(--card-shadow);
+  border-radius: 12px;
+}
+.closeButton ,
+.checkButton,
+.searchButton
+{
+  border-radius: 50%;
+  color: white;
+  font-size: 24px;
+  font-weight: 900;
+  width: 25px;
+  height: 25px;
+  margin: 0 2px;
+}
+.searchButton {
+  background: #0050EB; 
+}
+.checkButton{
+  background: #00BA00; 
+}
+.closeButton {
+  background: red;
+}
