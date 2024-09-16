@@ -263,12 +263,14 @@
   width: auto;
 }
 .navbar li:hover {
-  color: #2f06e4;
   font-size: 14px;
   font-weight: 900;
 }
 .navbar li span{
   position: relative;
+}
+.navbar li span:hover{
+  color: #2f06e4;
 }
 
 .navbar li span::after {
@@ -282,6 +284,7 @@
 }
 
 .navbar li span:hover::after {
+  color: #2f06e4;
   width: 100%; 
   position: absolute;
 }
