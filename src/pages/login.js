@@ -21,7 +21,9 @@ const LoginPage = () => {
       const { data } = response;
 
       localStorage.setItem('token', data.token);
-      router.push('/');
+      localStorage.setItem('role', data.user.rankUser);
+      
+      data.user.rankUser == 3 ? router.push('/admin/dashboard') : router.push('/');
       
     } catch (error) {
       setError(error.response?.data?.message || 'Login failed');

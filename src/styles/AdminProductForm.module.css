@@ -1,0 +1,203 @@
+.container {
+  margin-top: 6rem;
+  display: flex;
+  justify-content: space-between;
+}
+.card {
+  background: var(--surface-card);
+  border: 1px solid var(--surface-border);
+  padding: 2rem;
+  margin-bottom: 2rem;
+  box-shadow: var(--card-shadow);
+  border-radius: 12px;
+}
+.closeButton,
+.checkButton,
+.searchButton {
+  border-radius: 50%;
+  color: white;
+  font-size: 24px;
+  font-weight: 900;
+  width: 25px;
+  height: 25px;
+  margin: 0 2px;
+}
+.searchButton {
+  background: #0050eb;
+}
+.checkButton {
+  background: #00ba00;
+}
+.closeButton {
+  background: red;
+}
+.middleContainer {
+  display: flex;
+  flex-direction: column;
+  padding: 30px;
+  margin: 0 30px;
+  border-radius: 15px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+}
+
+.middleContainer h2 {
+  margin: 0px;
+}
+
+.middleContainer h3 {
+  font-size: 10px;
+  font-weight: 275;
+  line-height: 17px;
+  letter-spacing: 0.04em;
+  text-align: left;
+  color: #aba7a7;
+}
+.infoContainer {
+  display: flex;
+  justify-content: space-between;
+}
+.leftSide {
+  display: flex;
+  flex: 1 58%;
+  flex-direction: column;
+  gap: 10px;
+}
+.leftSide p {
+  color: #06a8cc;
+  font-family: Poppins;
+  font-size: 12px;
+  font-weight: 300;
+}
+.leftSide h3 {
+  color: #000000;
+  font-family: Poppins;
+  font-size: 14px;
+  font-weight: 900;
+  margin: 0;
+}
+.leftSide ul li {
+  color: #000000;
+  font-family: Poppins;
+  font-size: 12px;
+  font-weight: 300;
+  line-height: 18px;
+  text-align: left;
+}
+.rightSide {
+  display: flex;
+  flex: 1 38%;
+  flex-direction: column;
+}
+.middleLine {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+}
+.Line {
+  width: 4px;
+  height: 100%;
+  background: #d9d9d9;
+}
+.labelContainer,
+.labelContainerDark {
+  display: flex;
+  padding: 15px;
+  border-radius: 10px;
+}
+.labelContainer label:first-child {
+  flex-basis: 40%;
+  color: #000000;
+  font-family: Poppins;
+  font-size: 10px;
+  font-weight: 700;
+  line-height: 17px;
+  letter-spacing: 0.04em;
+  text-align: left;
+}
+.labelContainerDark label:first-child {
+  flex-basis: 40%;
+  color: #000000;
+  font-family: Poppins;
+  font-size: 10px;
+  font-weight: 700;
+  line-height: 17px;
+  letter-spacing: 0.04em;
+  text-align: left;
+}
+.labelContainer label:last-child {
+  /* flex-basis: 60%; */
+  font-family: Poppins;
+  font-size: 10px;
+  font-weight: 500;
+  line-height: 17px;
+  letter-spacing: 0.04em;
+  text-align: left;
+  color: #8f8f8f;
+}
+.labelContainerDark label:last-child {
+  flex-basis: 60%;
+  font-family: Poppins;
+  font-size: 10px;
+  font-weight: 500;
+  line-height: 17px;
+  letter-spacing: 0.04em;
+  text-align: left;
+  color: #8f8f8f;
+}
+
+.labelContainerDark {
+  background: #f2f2f2;
+}
+
+/*****************
+******      ******
+*****************/
+
+.labelContainerImage {
+  display: flex;
+  padding: 15px;
+  border-radius: 10px;
+  justify-content: space-between;
+}
+.labelContainerImage label {
+  color: #000000;
+  font-family: Poppins;
+  font-size: 10px;
+  font-weight: 700;
+  line-height: 17px;
+  letter-spacing: 0.04em;
+  text-align: left;
+}
+.logoImage {
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  margin-bottom: 10px;
+}
+
+.fileInputContainer {
+  position: relative;
+}
+
+.hiddenFileInput {
+  opacity: 0;
+  position: absolute;
+  z-index: -1;
+}
+
+.customFileLabel {
+  background-color: #b6b6b6;
+  color: white;
+  padding: 10px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 14px;
+  transition: background-color 0.3s ease;
+  position: relative;
+  top: 10px;
+}
+
+.customFileLabel:hover {
+  background-color: #acacac;
+}

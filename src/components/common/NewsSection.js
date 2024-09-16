@@ -99,7 +99,9 @@ const NewsSection = () => {
       <h3>Qualités</h3>
       <div className={styles.qualitieItems}>
         <div className={styles.qualitieItemDark}>
-          <TbCoinEuro className={styles.coinEuro} />
+          <div style={{flex:"1 1 19%"}}>
+            <TbCoinEuro className={styles.coinEuro} />
+          </div>
           <div className={styles.qualitieItemDetails}>
             <span className={styles.qualitieItemTitle}>
               Chiffre d’affaires{" "}
@@ -110,7 +112,9 @@ const NewsSection = () => {
         </div>
 
         <div className={styles.qualitieItemLight}>
-          <SlWallet className={styles.wallet} />
+          <div style={{flex:"1 1 15%"}}>
+            <SlWallet className={styles.wallet} />
+          </div>
           <div className={styles.qualitieItemDetails}>
             <span className={styles.qualitieItemTitle}>Commandes </span>
             <span>178</span>
@@ -118,7 +122,9 @@ const NewsSection = () => {
           <span className={styles.qualitieItemPer}>2% Ce mois</span>
         </div>
         <div className={styles.qualitieItemDark}>
-          <FaFileInvoiceDollar className={styles.invoice} />
+          <div style={{flex:"1 1 15%"}}>
+            <FaFileInvoiceDollar className={styles.invoice} />
+          </div>
           <div className={styles.qualitieItemDetails}>
             <span className={styles.qualitieItemTitle}>Devis </span>
             <span>229</span>

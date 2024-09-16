@@ -36,6 +36,27 @@ const SidebarAdmin = () => {
               </Link>
             <IoIosArrowDown />
           </div>
+          <div className={styles.menuItemTrigger}>
+            <LuSettings2 />
+              <Link href={`/admin/sub_category`} passHref style={{ textDecoration: "none",color : "inherit" }}>
+                <h3>Famille</h3>
+              </Link>
+            <IoIosArrowDown />
+          </div>
+          <div className={styles.menuItemTrigger}>
+            <LuSettings2 />
+              <Link href={`/admin/product`} passHref style={{ textDecoration: "none",color : "inherit" }}>
+                <h3>Produit</h3>
+              </Link>
+            <IoIosArrowDown />
+          </div>
+          <div className={styles.menuItemTrigger}>
+            <LuSettings2 />
+              <Link href={`/admin/news`} passHref style={{ textDecoration: "none",color : "inherit" }}>
+                <h3>News</h3>
+              </Link>
+            <IoIosArrowDown />
+          </div>
         </div>
 
       </div>
