@@ -1,6 +1,6 @@
 // /components/Sidebar.js
 import React, { useState } from "react";
-import styles from "../../styles/SideBar.module.css";
+import styles from "../../styles/SideBarAdmin.module.css";
 import Image from "next/image";
 import { LuSettings2 } from "react-icons/lu";
 import { IoIosArrowDown } from "react-icons/io";
@@ -38,17 +38,25 @@ const SidebarAdmin = () => {
           </div>
           <div className={styles.menuItemTrigger}>
             <LuSettings2 />
-              <Link href={`/admin/sub_category`} passHref style={{ textDecoration: "none",color : "inherit" }}>
+              <Link href={`/admin/famille`} passHref style={{ textDecoration: "none",color : "inherit" }}>
                 <h3>Famille</h3>
               </Link>
             <IoIosArrowDown />
           </div>
-          <div className={styles.menuItemTrigger}>
+          <div className={styles.menuItemTrigger} onClick={() => toggleDropdown(1)}>
             <LuSettings2 />
-              <Link href={`/admin/product`} passHref style={{ textDecoration: "none",color : "inherit" }}>
-                <h3>Produit</h3>
-              </Link>
+            <h3>Produit</h3>
             <IoIosArrowDown />
+            {openDropdown === 1 && (
+              <ul className={styles.dropdown}>
+                <Link href={`/admin/product/realisaprint`} passHref style={{ textDecoration: "none",color : "inherit" }}>
+                  <li>Produit Realis a Print</li>
+                </Link>
+                <Link href={`/admin/product/myhd`} passHref style={{ textDecoration: "none",color : "inherit" }}>
+                  <li>Produit MyHd</li>
+                </Link>
+              </ul>
+            )}
           </div>
           <div className={styles.menuItemTrigger}>
             <LuSettings2 />

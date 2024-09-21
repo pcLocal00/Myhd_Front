@@ -1,11 +1,12 @@
+import AdminRoute from "@/components/AdminRoute";
 import LandingPage from "@/components/forms/Admin/Dashboard";
 
 const DashboardPage = () => {
   return (
-    <div>
-      <LandingPage/>
-    </div>
+      <div>
+        <LandingPage/>
+      </div>
   );
 };
 
-export default DashboardPage;
+export default AdminRoute(DashboardPage);

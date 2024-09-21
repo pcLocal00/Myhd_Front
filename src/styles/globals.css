@@ -50,3 +50,18 @@ form {
   border-radius: 10px;
   border: 1px solid #D9D9D9;
 }
+.p-datatable .p-column-header-content{
+  justify-content: center;
+}
+.p-tree .p-tree-container .p-treenode .p-treenode-content .p-checkbox{
+  display: flex;
+  align-items: center;
+  margin: 0;
+}
+.p-checkbox .p-checkbox-box {
+  width: 17px;
+  height: 17px;
+}
+.p-treenode-label{
+  font-size: 14px;
+}

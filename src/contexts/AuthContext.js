@@ -1,6 +1,6 @@
 // src/context/AuthContext.js
-import { createContext, useState, useEffect } from 'react';
 import { useRouter } from 'next/router';
+import { createContext, useState, useEffect } from 'react';
 
 const AuthContext = createContext();
 

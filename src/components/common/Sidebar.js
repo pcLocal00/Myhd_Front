@@ -34,7 +34,7 @@ const Sidebar = () => {
         <div className={styles.menuItem}>
           <div className={styles.menuItemTrigger}>
             <LuSettings2 />
-              <Link href={`/print`} passHref style={{ textDecoration: "none",color : "inherit" }}>
+              <Link href={`/user/print`} passHref style={{ textDecoration: "none",color : "inherit" }}>
                 <h3>MES NOUVEAUX PRODUITS</h3>
               </Link>
             <IoIosArrowDown />
@@ -49,13 +49,13 @@ const Sidebar = () => {
           </div>
           {openDropdown === 1 && (
             <ul className={styles.dropdown}>
-              <Link href={`/catalogue`} passHref style={{ textDecoration: "none",color : "inherit" }}>
+              <Link href={`/user/catalogue`} passHref style={{ textDecoration: "none",color : "inherit" }}>
                 <li>Hd communication</li>
               </Link>
-              <Link href={`/catalogue`} passHref style={{ textDecoration: "none",color : "inherit" }}>
+              <Link href={`/user/catalogue`} passHref style={{ textDecoration: "none",color : "inherit" }}>
                 <li>Hd Dev informatique</li>
               </Link>
-              <Link href={`/catalogue`} passHref style={{ textDecoration: "none",color : "inherit" }}>
+              <Link href={`/user/catalogue`} passHref style={{ textDecoration: "none",color : "inherit" }}>
                 <li>Hd Solution</li>
               </Link>
             </ul>
@@ -65,7 +65,7 @@ const Sidebar = () => {
         <div className={styles.menuItem}>
           <div className={styles.menuItemTrigger}>
             <FaHandHoldingMedical />
-              <Link href={`/devis`} passHref style={{ textDecoration: "none" }}>
+              <Link href={`/user/devis`} passHref style={{ textDecoration: "none" }}>
                 <h3>MON DEVIS</h3>
               </Link>
             <IoIosArrowDown />
@@ -75,7 +75,7 @@ const Sidebar = () => {
         <div className={styles.menuItem}>
           <div className={styles.menuItemTrigger}>
             <IoBagCheck />
-              <Link href={`/order`} passHref style={{ textDecoration: "none" }}>
+              <Link href={`/user/order`} passHref style={{ textDecoration: "none" }}>
                 <h3>MON COMMANDES</h3>
               </Link>
             <IoIosArrowDown />

@@ -3,6 +3,27 @@
   display: flex;
   justify-content: space-between;
 }
+.headerContainer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.plusButton {
+  border-radius: 50%;
+  height: 35px;
+  width: 35px;
+  background: #05a8cc;
+  color: white;
+  font-size: 20px;
+  font-weight: 900;
+  border: 1px solid;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  padding: 0; /* Ensure no extra space is added */
+  line-height: 1; /* Adjust line height to center text vertically */
+}
 .card {
   background: var(--surface-card);
   border: 1px solid var(--surface-border);
@@ -10,6 +31,26 @@
   margin-bottom: 2rem;
   box-shadow: var(--card-shadow);
   border-radius: 12px;
+}
+.closeButton,
+.checkButton,
+.searchButton {
+  border-radius: 50%;
+  color: white;
+  font-size: 24px;
+  font-weight: 900;
+  width: 25px;
+  height: 25px;
+  margin: 0 2px;
+}
+.searchButton {
+  background: #0050eb;
+}
+.checkButton {
+  background: #00ba00;
+}
+.closeButton {
+  background: red;
 }
 .middleContainer {
   display: flex;
@@ -35,60 +76,13 @@
   text-align: left;
   color: #aba7a7;
 }
-.headerContainer {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-.plusButton {
-  border-radius: 50%;
-  height: 35px;
-  width: 35px;
-  background: #05a8cc;
-  color: white;
-  font-size: 20px;
-  font-weight: 900;
-  border: 1px solid;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  position: relative;
-  padding: 0; /* Ensure no extra space is added */
-  line-height: 1; /* Adjust line height to center text vertically */
-}
-.closeButton,
-.checkButton,
-.searchButton {
-  border-radius: 50%;
-  color: white;
-  font-size: 24px;
-  font-weight: 900;
-  width: 25px;
-  height: 25px;
-  margin: 0 2px;
-}
-.searchButton {
-  background: #0050eb;
-}
-.checkButton {
-  background: #00ba00;
-}
-.closeButton {
-  background: red;
-}
-
-.infoContainerInfos {
-  display: flex;
-  justify-content: space-between;
-}
 .infoContainer {
   display: flex;
-  flex-direction: column;
   justify-content: space-between;
 }
 .leftSide {
   display: flex;
-  flex: 1 42%;
+  flex: 1 58%;
   flex-direction: column;
   gap: 10px;
 }
@@ -205,10 +199,6 @@
   margin-bottom: 10px;
 }
 
-.fileInputContainer {
-  position: relative;
-}
-
 .hiddenFileInput {
   opacity: 0;
   position: absolute;
@@ -229,4 +219,14 @@
 
 .customFileLabel:hover {
   background-color: #acacac;
+}
+
+.input {
+  margin-bottom: 10px;
+  padding: 7px 20px;
+  font-size: 16px;
+  border: 1px solid transparent;
+  border-radius: 50px;
+  width: 80%;
+  background-color: #e2e0e08c;
 }

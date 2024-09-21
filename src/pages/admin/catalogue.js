@@ -1,11 +1,12 @@
+import AdminRoute from "@/components/AdminRoute";
 import AdminCatalogue from "@/components/forms/Admin/AdminCatalogue";
 
 const CatalogueAdminPage = () => {
   return (
-    <div>
-      <AdminCatalogue/>
-    </div>
+      <div>
+        <AdminCatalogue />
+      </div>
   );
 };
 
-export default CatalogueAdminPage;
+export default AdminRoute(CatalogueAdminPage);
