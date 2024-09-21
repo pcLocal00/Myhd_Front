@@ -230,3 +230,12 @@
 .customFileLabel:hover {
   background-color: #acacac;
 }
+.input {
+  margin-bottom: 10px;
+  padding: 7px 20px;
+  font-size: 16px;
+  border: 1px solid transparent;
+  border-radius: 50px;
+  width: 80%;
+  background-color: #e2e0e08c;
+}

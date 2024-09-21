@@ -3,7 +3,7 @@
 import Header from "../../common/Header";
 import Sidebar from "../../common/Sidebar";
 import RightSideBar from "../../common/RightSideBar";
-import styles from "../../styles/InfoForm.module.css";
+import styles from "../../../styles/InfoForm.module.css";
 import React, { useState, useEffect } from "react";
 import "primereact/resources/themes/lara-light-cyan/theme.css";
 

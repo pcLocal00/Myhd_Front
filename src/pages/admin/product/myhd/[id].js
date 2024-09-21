@@ -18,6 +18,9 @@ import { MdClose, MdCheck , MdSearch } from "react-icons/md";
 import { Tree } from "primereact/tree";
 import axios from "axios";
 import AdminRoute from "@/components/AdminRoute";
+import { Dialog } from "primereact/dialog";
+import { Button } from "primereact/button";
+import { Dropdown } from 'primereact/dropdown';
 
 
 const ProductPage = () => {
@@ -26,10 +29,12 @@ const ProductPage = () => {
 
     const router = useRouter();
     const { id } = router.query;
+    const [selectedCity, setSelectedCity] = useState(null);
 
     const [loading, setLoading] = useState(false);
     const [product, setProduct] = useState([]);
     const [quantite, setQuantite] = useState([]);
+    const [hdcodetg, setHdcodetg] = useState([]);
     const [paramFormat, setParamFormat] = useState([]);
     const [paramImpr, setParamImpr] = useState([]);
     const [paramPaper, setParamPaper] = useState([]);
@@ -37,13 +42,25 @@ const ProductPage = () => {
     const [paramTrans, setParamTransk] = useState([]);
     const [selectedKeys, setSelectedKeys] = useState(null);
     const [nodes, setNodes] = useState([]);
+    const [showModal, setShowModal] = useState(false);
 
+    const [state, setState] = useState({
+        titre_news: '',
+        sous_titre_news: '',
+        description_news: '',
+        IMG_PRODUCT: null,
+    });
+
+    const handleChange = (evt) => {
+        const { name, value, type, checked } = evt.target;
+        setState({ ...state, [name]: type === 'checkbox' ? checked : value,  });
+    };
 
     useEffect(() => {
         const fetchAllData = async () => {
             setLoading(true);
             try {
-                const [productRes, catalogueRes, quantiteRes, formatRes, imprRes, paperRes, packRes, transRes] = await Promise.all([
+                const [productRes, catalogueRes, quantiteRes, formatRes, imprRes, paperRes, packRes, transRes,hdcodetg] = await Promise.all([
                     axios.get(`${Url}/product/myhd/${id}`),
                     axios.get(`${Url}/famille/hierarchy/${id}`),
                     axios.get(`${Url}/product_action/${id}/0`),
@@ -52,6 +69,7 @@ const ProductPage = () => {
                     axios.get(`${Url}/sdt_papers_element/${id}/2`),
                     axios.get(`${Url}/product_action/${id}/2`),
                     axios.get(`${Url}/product_action/${id}/5`),
+                    axios.get(`${Url}/hdcodetg`),
                 ]);
         
                 // Set state with fetched data
@@ -63,6 +81,7 @@ const ProductPage = () => {
                 setParamPaper(paperRes.data["data"]);
                 setParamPack(packRes.data["data"]);
                 setParamTransk(transRes.data["data"]);
+                setHdcodetg(hdcodetg.data["data"]);
             } catch (error) {
                 console.error('Error fetching data:', error);
             } finally {
@@ -138,7 +157,9 @@ const ProductPage = () => {
             })),
         }));
     };
-    
+    const handleOnSubmit = async (evt) => {
+        evt.preventDefault();
+    };
     return (
         <div>
             <div className={stylesT.layoutTopbar}>
@@ -238,32 +259,37 @@ const ProductPage = () => {
                                     </TabPanel>
                                     <TabPanel header=" Paramétrage des quantités">
                                         <div className={styles.infoContainer}>
-                                                <h3>Quantités & Nb modèles & PAO</h3>
-                                                <div style={{display:"flex" ,flexDirection:"column"}}>
-                                                    <div className="card">
-                                                        <h3>unatités :</h3>
-                                                        <DataTable value={quantite} paginator showGridlines rows={10} loading={loading} dataKey="id" emptyMessage="Aucun nouvelles trouvé.">
-                                                            <Column header="Quantité" field="id" style={{textAlign:'center' , maxWidth: '300px',fontSize:'12px'}} />
-                                                            <Column header="Actions" bodyClassName="text-center" style={{ maxWidth: '80px' ,fontSize:'12px',textAlign:'center'}} body={actionBodyTemplate}/>
-                                                        </DataTable>
+                                            <h3>Quantités & Nb modèles & PAO</h3>
+                                            <div style={{display:"flex" ,flexDirection:"column"}}>
+                                                <div className="card">
+                                                    <div className={styles.headerContainer}>
+                                                        <div>
+                                                            <h2>Qunatités : </h2>
+                                                        </div>
+                                                        <button className={styles.plusButton} id="plusButton" type="submit" onClick={() => setShowModal(true)} >+</button>
                                                     </div>
-                                                    <div className="card">
-                                                        <h3>Nb modèles :</h3>
-                                                        <DataTable paginator showGridlines rows={10} loading={loading} dataKey="id" emptyMessage="Aucun nouvelles trouvé.">
-                                                            <Column header="Ordre" field="id" style={{textAlign:'center' , maxWidth: '300px',fontSize:'12px'}} />
-                                                            <Column header="Modèle" field="id" style={{textAlign:'center' , maxWidth: '300px',fontSize:'12px'}} />
-                                                            <Column header="Actions" bodyClassName="text-center" style={{ maxWidth: '80px' ,fontSize:'12px',textAlign:'center'}} body={actionBodyTemplate}/>
-                                                        </DataTable>
-                                                    </div>
-                                                    <div className="card">
-                                                        <h3>Fichier PAO :</h3>
-                                                        <DataTable paginator showGridlines rows={10} loading={loading} dataKey="id" emptyMessage="Aucun nouvelles trouvé.">
-                                                            <Column header="Ordre" field="id" style={{textAlign:'center' , maxWidth: '300px',fontSize:'12px'}} />
-                                                            <Column header="Type fichier" field="id" style={{textAlign:'center' , maxWidth: '300px',fontSize:'12px'}} />
-                                                            <Column header="Actions" bodyClassName="text-center" style={{ maxWidth: '80px' ,fontSize:'12px',textAlign:'center'}} body={actionBodyTemplate}/>
-                                                        </DataTable>
-                                                    </div>
+                                                    <DataTable value={quantite} paginator showGridlines rows={10} loading={loading} dataKey="id" emptyMessage="Aucun nouvelles trouvé.">
+                                                        <Column header="Quantité" field="id" style={{textAlign:'center' , maxWidth: '300px',fontSize:'12px'}} />
+                                                        <Column header="Actions" bodyClassName="text-center" style={{ maxWidth: '80px' ,fontSize:'12px',textAlign:'center'}} body={actionBodyTemplate}/>
+                                                    </DataTable>
                                                 </div>
+                                                <div className="card">
+                                                    <h3>Nb modèles :</h3>
+                                                    <DataTable paginator showGridlines rows={10} loading={loading} dataKey="id" emptyMessage="Aucun nouvelles trouvé.">
+                                                        <Column header="Ordre" field="id" style={{textAlign:'center' , maxWidth: '300px',fontSize:'12px'}} />
+                                                        <Column header="Modèle" field="id" style={{textAlign:'center' , maxWidth: '300px',fontSize:'12px'}} />
+                                                        <Column header="Actions" bodyClassName="text-center" style={{ maxWidth: '80px' ,fontSize:'12px',textAlign:'center'}} body={actionBodyTemplate}/>
+                                                    </DataTable>
+                                                </div>
+                                                <div className="card">
+                                                    <h3>Fichier PAO :</h3>
+                                                    <DataTable paginator showGridlines rows={10} loading={loading} dataKey="id" emptyMessage="Aucun nouvelles trouvé.">
+                                                        <Column header="Ordre" field="id" style={{textAlign:'center' , maxWidth: '300px',fontSize:'12px'}} />
+                                                        <Column header="Type fichier" field="id" style={{textAlign:'center' , maxWidth: '300px',fontSize:'12px'}} />
+                                                        <Column header="Actions" bodyClassName="text-center" style={{ maxWidth: '80px' ,fontSize:'12px',textAlign:'center'}} body={actionBodyTemplate}/>
+                                                    </DataTable>
+                                                </div>
+                                            </div>
                                         </div>
                                     </TabPanel>
                                     <TabPanel header=" Familles & Catalogues">
@@ -371,7 +397,79 @@ const ProductPage = () => {
                                     </TabPanel>
                                 </TabView>
                             </div>
+                            {showModal && (
+                            <Dialog header={'Ajouter Nouvelle' } visible={showModal} className="custom-dialog" style={{ width: '50vw' }} modal onHide={() => setShowModal(false)}>
+                                <form onSubmit={handleOnSubmit} style={{width:"100%"}}>
+                                    <div>
+                                        <div style={{display:"flex" ,justifyContent:"space-between" , gap:"10px"}}>
+                                            <label>Code * :</label>
+                                            <Dropdown value={selectedCity} onChange={(e) => setSelectedCity(e.value)} options={hdcodetg} optionLabel="name" 
+                                                placeholder="Select a City" className="w-full md:w-14rem" />
+                                        </div>
+                                        <div style={{display:"flex" ,justifyContent:"space-between" , gap:"10px"}}>
+                                            <label>Code valeur (CODE RAPIDE) * :</label>
+                                            <input
+                                                type="text"
+                                                placeholder="Sous-titre"
+                                                name="sous_titre_news"
+                                                value={state.sous_titre_news}
+                                                onChange={handleChange}
+                                                className={styles.input}
+                                            />
+                                        </div>
+                                        <div style={{display:"flex" ,justifyContent:"space-between" , gap:"10px"}}>
+                                            <label>Valeur * :</label>
+                                            <input
+                                                type="text"
+                                                placeholder="Description"
+                                                name="description_news"
+                                                value={state.description_news}
+                                                onChange={handleChange}
+                                                className={styles.input}
+                                            />
+                                        </div>
+                                        <div style={{display:"flex" ,justifyContent:"space-between" , gap:"10px"}}>
+                                            <label>Type * :</label>
+                                            <input
+                                                type="text"
+                                                placeholder="Description"
+                                                name="description_news"
+                                                value={state.description_news}
+                                                onChange={handleChange}
+                                                className={styles.input}
+                                            />
+                                        </div>
+                                        <div style={{display:"flex" ,justifyContent:"space-between" , gap:"10px"}}>
+                                            <label>Afficher un champ supplimentaire</label>
+                                            <input
+                                                type="text"
+                                                placeholder="Description"
+                                                name="description_news"
+                                                value={state.description_news}
+                                                onChange={handleChange}
+                                                className={styles.input}
+                                            />
+                                        </div>
+                                        <div style={{display:"flex" ,justifyContent:"space-between" , gap:"10px"}}>
+                                            <label>Libellé du champ supplimentaire :</label>
+                                            <input
+                                                type="text"
+                                                placeholder="Description"
+                                                name="description_news"
+                                                value={state.description_news}
+                                                onChange={handleChange}
+                                                className={styles.input}
+                                            />
+                                        </div>
 
+                                    </div>
+                                    <div style={{display:"flex" ,justifyContent:"flex-end" ,marginTop:"10px"}}>
+                                        <Button type="submit" label="Confirm" severity="success" icon="pi pi-check" style={{marginRight:"10px"}}/>
+                                        <Button onClick={() => setShowModal(false)} label="Close" severity="danger" icon="pi pi-times" />
+                                    </div>
+                                </form>
+                            </Dialog>
+                        )}
                         </div>
                     </div>
                 </div>
@@ -381,3 +479,11 @@ const ProductPage = () => {
 };
 
 export default AdminRoute(ProductPage);
+
+
+
+
+
+
+
+

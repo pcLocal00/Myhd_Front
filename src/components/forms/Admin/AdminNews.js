@@ -43,7 +43,7 @@ const NewsAdminPage = () => {
     };
 
     const Url = process.env.NEXT_PUBLIC_API_URL;
-    const Url_IMAGE = process.env.NEXT_PUBLIC_IMAGE_URL;
+    const Url_IMAGE = process.env.NEXT_PUBLIC_IMAGE_URL_STORAGE;
 
     useEffect(() => {
         const fetchNews = async () => {
