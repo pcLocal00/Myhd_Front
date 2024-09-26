@@ -25,7 +25,6 @@ const AdminFamillePage = () => {
         const fetchAdminFamille = async () => {
           try {
             const response = await axios.get(`${Url}/famille`);
-            console.log('famille data : ',response.data["data"]);
             setAdminFamille(response.data["data"]);
           } catch (error) {
             console.error('Error fetching famille:', error);

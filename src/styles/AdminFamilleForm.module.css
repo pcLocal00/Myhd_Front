@@ -29,11 +29,13 @@
   text-align: left;
   color: #aba7a7;
 }
+
 .headerContainer {
   display: flex;
   justify-content: space-between;
   align-items: center;
 }
+
 .plusButton {
   border-radius: 50%;
   height: 35px;
@@ -50,6 +52,7 @@
   padding: 0; /* Ensure no extra space is added */
   line-height: 1; /* Adjust line height to center text vertically */
 }
+
 .card {
   background: var(--surface-card);
   border: 1px solid var(--surface-border);
@@ -58,24 +61,75 @@
   box-shadow: var(--card-shadow);
   border-radius: 12px;
 }
+
 .closeButton ,
 .checkButton,
-.searchButton
-{
+.searchButton {
   border-radius: 50%;
   color: white;
-  font-size: 24px;
-  font-weight: 900;
+  padding: 2px;
   width: 25px;
   height: 25px;
   margin: 0 2px;
 }
+
 .searchButton {
   background: #0050EB; 
 }
+
 .checkButton{
   background: #00BA00; 
 }
+
 .closeButton {
   background: red;
+}
+
+.fileInputContainer {
+  position: relative;
+}
+
+.hiddenFileInput {
+  opacity: 0;
+  position: absolute;
+  z-index: -1;
+  right: 0;
+}
+
+.customFileLabel {
+  background-color: #b6b6b6;
+  color: white;
+  padding: 10px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 14px;
+  transition: background-color 0.3s ease;
+  position: relative;
+  top: 10px;
+}
+
+.customFileLabel:hover {
+  background-color: #acacac;
+}
+
+.input ,.inputFrom{
+  padding: 7px 20px;
+  font-size: 16px;
+  border: 1px solid transparent;
+  border-radius: 50px;
+  width: 80%;
+  background-color: #e2e0e08c;
+}
+
+.inputFrom{
+  width: 100%;
+  padding: 15px 20px;
+}
+
+.inputTextHolders{
+  display: flex;
+  gap: 10px;
+  padding: 15px 0;
+  align-items: center;
+  justify-content: space-between;
 }

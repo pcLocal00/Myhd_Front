@@ -21,7 +21,6 @@ const LoginForm = ({ onLogin }) => {
   const handleOnSubmit = async (evt) => {
     evt.preventDefault();
     const { loginUser, passwordUser } = state;
-    console.log(loginUser, passwordUser);
     await onLogin(loginUser, passwordUser);
     setState({
       loginUser: '',

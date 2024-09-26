@@ -38,7 +38,6 @@ const ProduitAdminPage = () => {
     
     const imageBodyTemplate = (rowData) =>{
         const image = rowData.imagePathProduct ? `https://my.havetdigital.fr/${rowData.imagePathProduct}` : "/images/default.jpg";
-        console.log(image);
         
         return( 
             <Image

@@ -20,16 +20,12 @@ const LoginPage = () => {
 
       const { data } = response;
 
-      console.log('User rank:', data.user.rankUser); // Add this log
-
       localStorage.setItem('token', data.token);
       localStorage.setItem('role', data.user.rankUser);
 
       if (data.user.rankUser === 3) { 
-        console.log('Redirecting to /admin/dashboard');
         router.push('/admin/dashboard');
       } else {
-        console.log('Redirecting to /user/home');
         router.push('/user/home');
       }
     } catch (error) {

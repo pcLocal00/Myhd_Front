@@ -29,25 +29,41 @@ const SidebarAdmin = () => {
       <div className={styles.menuItems}>
 
         <div className={styles.menuItem}>
-          <div className={styles.menuItemTrigger}>
-            <LuSettings2 />
-              <Link href={`/admin/catalogue`} passHref style={{ textDecoration: "none",color : "inherit" }}>
-                <h3>Catalogue</h3>
-              </Link>
-            <IoIosArrowDown />
-          </div>
-          <div className={styles.menuItemTrigger}>
-            <LuSettings2 />
-              <Link href={`/admin/famille`} passHref style={{ textDecoration: "none",color : "inherit" }}>
-                <h3>Famille</h3>
-              </Link>
-            <IoIosArrowDown />
-          </div>
           <div className={styles.menuItemTrigger} onClick={() => toggleDropdown(1)}>
+            <LuSettings2 />
+            <h3>Catalogue</h3>
+            <IoIosArrowDown />
+            {openDropdown === 1 && (
+              <ul className={styles.dropdown}>
+                <Link href={`/admin/catalogue/realisaprint`} passHref style={{ textDecoration: "none",color : "inherit" }}>
+                  <li>Catalogue Realis a Print</li>
+                </Link>
+                <Link href={`/admin/catalogue/myhd`} passHref style={{ textDecoration: "none",color : "inherit" }}>
+                  <li>Catalogue MyHd</li>
+                </Link>
+              </ul>
+            )}
+          </div>
+          <div className={styles.menuItemTrigger} onClick={() => toggleDropdown(2)}>
+            <LuSettings2 />
+            <h3>Famille</h3>
+            <IoIosArrowDown />
+            {openDropdown === 2 && (
+              <ul className={styles.dropdown}>
+                <Link href={`/admin/famille/realisaprint`} passHref style={{ textDecoration: "none",color : "inherit" }}>
+                  <li>Famille Realis a Print</li>
+                </Link>
+                <Link href={`/admin/famille/myhd`} passHref style={{ textDecoration: "none",color : "inherit" }}>
+                  <li>Famille MyHd</li>
+                </Link>
+              </ul>
+            )}
+          </div>
+          <div className={styles.menuItemTrigger} onClick={() => toggleDropdown(3)}>
             <LuSettings2 />
             <h3>Produit</h3>
             <IoIosArrowDown />
-            {openDropdown === 1 && (
+            {openDropdown === 3 && (
               <ul className={styles.dropdown}>
                 <Link href={`/admin/product/realisaprint`} passHref style={{ textDecoration: "none",color : "inherit" }}>
                   <li>Produit Realis a Print</li>

@@ -7,7 +7,7 @@ import { DataTable } from "primereact/datatable";
 import { Button } from "primereact/button";
 import { Dialog } from "primereact/dialog";
 import { useEffect, useState } from "react";
-import { MdClose, MdCheck , MdSearch } from "react-icons/md";
+import { MdClose, MdEdit } from "react-icons/md";
 import stylesT from "../../../styles/components/TapBa.module.scss";
 import styles from "../../../styles/AdminNewsForm.module.css";
 import "primereact/resources/themes/lara-light-indigo/theme.css";
@@ -64,7 +64,6 @@ const NewsAdminPage = () => {
         evt.preventDefault();
         const { titre_news, sous_titre_news, description_news, IMG_PRODUCT } = state;
     
-        // Check for required fields
         if (!titre_news || !sous_titre_news || !description_news) {
             alert('Please fill all the required fields.');
             return;
@@ -75,7 +74,6 @@ const NewsAdminPage = () => {
         formData.append('sous_titre_news', sous_titre_news);
         formData.append('description_news', description_news);
         
-        // Append the image if available
         if (IMG_PRODUCT) {
             formData.append('image_news', IMG_PRODUCT);
         }
@@ -112,13 +110,11 @@ const NewsAdminPage = () => {
         setShowModal(false);
     };
     
-
     const actionBodyTemplate = () =>{
         return(
             <div>
-                <MdCheck className={styles.checkButton}/>
+                <MdEdit className={styles.checkButton} id="editButton" type="submit" onClick={() => handleEditClick(rowData.id)} />
                 <MdClose className={styles.closeButton}/>
-                <MdSearch className={styles.searchButton}/>
             </div>
         );
     }

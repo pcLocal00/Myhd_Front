@@ -28,7 +28,6 @@ const OrderPage = () => {
         const fetchCommande = async () => {
           try {
             const response = await axios.get(`${Url}/job/${id}`);
-            console.log(response.data['commande']);
             setCommande(response.data['commande']);
           } catch (error) {
             console.error('Error fetching Commande:', error);

@@ -20,7 +20,6 @@ const PrintForm = () => {
     const fetchCategories = async () => {
       try {
         const response = await axios.get(`${Url}/categorie`);
-        console.log('daata is :', response.data.data);
         setCategorie(response.data.data);
       } catch (error) {
         console.error('Error fetching categorie:', error);

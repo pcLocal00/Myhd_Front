@@ -26,7 +26,6 @@ const CatalogueAdminPage = () => {
         const fetchDevis = async () => {
           try {
             const response = await axios.get(`${Url}/catalogue`);
-            console.log('catalogue data : ',response.data["data"]);
             setCatalogue(response.data["data"]);
           } catch (error) {
             console.error('Error fetching catalogue:', error);

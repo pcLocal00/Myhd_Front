@@ -3,11 +3,13 @@
   display: flex;
   justify-content: space-between;
 }
+
 .headerContainer {
   display: flex;
   justify-content: space-between;
   align-items: center;
 }
+
 .plusButton {
   border-radius: 50%;
   height: 35px;
@@ -24,6 +26,7 @@
   padding: 0; /* Ensure no extra space is added */
   line-height: 1; /* Adjust line height to center text vertically */
 }
+
 .card {
   background: var(--surface-card);
   border: 1px solid var(--surface-border);
@@ -32,26 +35,30 @@
   box-shadow: var(--card-shadow);
   border-radius: 12px;
 }
+
 .closeButton,
 .checkButton,
 .searchButton {
   border-radius: 50%;
   color: white;
-  font-size: 24px;
-  font-weight: 900;
+  padding: 2px;
   width: 25px;
   height: 25px;
   margin: 0 2px;
 }
+
 .searchButton {
   background: #0050eb;
 }
+
 .checkButton {
   background: #00ba00;
 }
+
 .closeButton {
   background: red;
 }
+
 .middleContainer {
   display: flex;
   flex-direction: column;
@@ -76,22 +83,26 @@
   text-align: left;
   color: #aba7a7;
 }
+
 .infoContainer {
   display: flex;
   justify-content: space-between;
 }
+
 .leftSide {
   display: flex;
   flex: 1 58%;
   flex-direction: column;
   gap: 10px;
 }
+
 .leftSide p {
   color: #06a8cc;
   font-family: Poppins;
   font-size: 12px;
   font-weight: 300;
 }
+
 .leftSide h3 {
   color: #000000;
   font-family: Poppins;
@@ -99,6 +110,7 @@
   font-weight: 900;
   margin: 0;
 }
+
 .leftSide ul li {
   color: #000000;
   font-family: Poppins;
@@ -107,17 +119,20 @@
   line-height: 18px;
   text-align: left;
 }
+
 .rightSide {
   display: flex;
   flex: 1 38%;
   flex-direction: column;
 }
+
 .middleLine {
   display: flex;
   justify-content: center;
   align-items: center;
   padding: 20px;
 }
+
 .Line {
   width: 4px;
   height: 100%;
@@ -129,6 +144,7 @@
   padding: 15px;
   border-radius: 10px;
 }
+
 .labelContainer label:first-child {
   flex-basis: 40%;
   color: #000000;
@@ -139,6 +155,7 @@
   letter-spacing: 0.04em;
   text-align: left;
 }
+
 .labelContainerDark label:first-child {
   flex-basis: 40%;
   color: #000000;
@@ -149,6 +166,7 @@
   letter-spacing: 0.04em;
   text-align: left;
 }
+
 .labelContainer label:last-child {
   /* flex-basis: 60%; */
   font-family: Poppins;
@@ -159,6 +177,7 @@
   text-align: left;
   color: #8f8f8f;
 }
+
 .labelContainerDark label:last-child {
   flex-basis: 60%;
   font-family: Poppins;
@@ -184,6 +203,7 @@
   border-radius: 10px;
   justify-content: space-between;
 }
+
 .labelContainerImage label {
   color: #000000;
   font-family: Poppins;
@@ -193,6 +213,7 @@
   letter-spacing: 0.04em;
   text-align: left;
 }
+
 .logoImage {
   border: 1px solid #ddd;
   border-radius: 8px;
