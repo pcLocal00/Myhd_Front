@@ -7,7 +7,6 @@ import { useEffect, useState } from "react";
 import { TabPanel, TabView } from "primereact/tabview";
 import SidebarAdmin from "@/components/common/SidebarAdmin";
 import styles from "../../../../styles/AdminProductForm.module.css";
-import stylesT from "../../../../styles/components/TapBa.module.scss";
 import "primeflex/primeflex.css";
 import "primeicons/primeicons.css";
 import "primereact/resources/primereact.css";
@@ -23,6 +22,7 @@ import { Button } from "primereact/button";
 import { Dropdown } from 'primereact/dropdown';
 import { toast, ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import LayoutTopbar from "@/components/common/LayoutTopbar";
 
 const ProductPage = () => {
     const Url = process.env.NEXT_PUBLIC_API_URL;
@@ -462,37 +462,7 @@ const ProductPage = () => {
     
     return (
         <div>
-            <div className={stylesT.layoutTopbar}>
-                <Link href="/" className={stylesT.layoutTopbarLogo}>
-                    <Image src="/images/Logo-sidebar.png" alt="Logo" className={styles.logoImage} width={160} height={50} />
-                </Link>
-
-                <button type="button" className={`${stylesT.layoutMenuButton} ${stylesT.pLink}`}>
-                    <i className="pi pi-bars" />
-                </button>
-
-                <button type="button" className={`${stylesT.layoutTopbarMenuButton} ${stylesT.pLink}`}>
-                    <i className="pi pi-ellipsis-v" />
-                </button>
-
-                <div className={stylesT.layoutTopbarMenu}>
-                    <button type="button" className={`${stylesT.layoutTopbarButton} ${stylesT.pLink}`}>
-                        <i className="pi pi-calendar"></i>
-                        <span>Calendar</span>
-                    </button>
-                    <button type="button" className={`${stylesT.layoutTopbarButton} ${stylesT.pLink}`}>
-                        <i className="pi pi-user"></i>
-                        <span>Profile</span>
-                    </button>
-                    <Link href="/documentation">
-                        <button type="button" className={`${stylesT.layoutTopbarButton} ${stylesT.pLink}`}>
-                            <i className="pi pi-cog"></i>
-                            <span>Settings</span>
-                        </button>
-                    </Link>
-                </div>
-            </div>
-
+            <LayoutTopbar />
             <div className={styles.container}>
                 <SidebarAdmin />
                 <div style={{display:"flex",flexDirection:"column", width:"81%"}}>

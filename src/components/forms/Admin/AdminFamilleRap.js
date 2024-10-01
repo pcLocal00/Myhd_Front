@@ -13,6 +13,7 @@ import "primeicons/primeicons.css";
 import "primereact/resources/primereact.css";
 import { MdClose, MdCheck , MdSearch } from "react-icons/md";
 import { Tag } from "primereact/tag";
+import LayoutTopbar from "@/components/common/LayoutTopbar";
 
 const AdminFamillePage = () => {
     const [AdminFamille, setAdminFamille] = useState([]);
@@ -57,36 +58,7 @@ const AdminFamillePage = () => {
     return (
         <div>
 
-            <div className={stylesT.layoutTopbar}>
-                <Link href="/" className={stylesT.layoutTopbarLogo}>
-                    <Image src="/images/Logo-sidebar.png" alt="Logo" className={styles.logoImage} width={160} height={50} />
-                </Link>
-
-                <button type="button" className={`${stylesT.layoutMenuButton} ${stylesT.pLink}`}>
-                    <i className="pi pi-bars" />
-                </button>
-
-                <button type="button" className={`${stylesT.layoutTopbarMenuButton} ${stylesT.pLink}`}>
-                    <i className="pi pi-ellipsis-v" />
-                </button>
-
-                <div className={stylesT.layoutTopbarMenu}>
-                    <button type="button" className={`${stylesT.layoutTopbarButton} ${stylesT.pLink}`}>
-                        <i className="pi pi-calendar"></i>
-                        <span>Calendar</span>
-                    </button>
-                    <button type="button" className={`${stylesT.layoutTopbarButton} ${stylesT.pLink}`}>
-                        <i className="pi pi-user"></i>
-                        <span>Profile</span>
-                    </button>
-                    <Link href="/documentation">
-                        <button type="button" className={`${stylesT.layoutTopbarButton} ${stylesT.pLink}`}>
-                            <i className="pi pi-cog"></i>
-                            <span>Settings</span>
-                        </button>
-                    </Link>
-                </div>
-            </div>
+            <LayoutTopbar />
 
             <div className={styles.container}>
                 <SidebarAdmin />

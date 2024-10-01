@@ -3,7 +3,6 @@ import Image from "next/image";
 import Link from "next/link";
 import { Column } from "primereact/column";
 import { DataTable } from "primereact/datatable";
-import stylesT from "../../../styles/components/TapBa.module.scss";
 import styles from "../../../styles/AdminCatalogueForm.module.css";
 import { useEffect, useState } from "react";
 import "primereact/resources/themes/lara-light-indigo/theme.css";
@@ -13,6 +12,7 @@ import "primereact/resources/primereact.css";
 import axios from "axios";
 import { MdClose, MdCheck , MdSearch } from "react-icons/md";
 import { Tag } from "primereact/tag";
+import LayoutTopbar from "@/components/common/LayoutTopbar";
 
 
 const CatalogueAdminPage = () => {
@@ -42,13 +42,12 @@ const CatalogueAdminPage = () => {
             <div>
                 <MdCheck className={styles.checkButton}/>
                 <MdClose className={styles.closeButton}/>
-                <Link href={`/admin/catalogue/${rowData.id}`} passHref style={{ textDecoration: "none",color : "inherit" }}>
+                <Link href={`/admin/catalogue/realisaprint/${rowData.id}`} passHref style={{ textDecoration: "none",color : "inherit" }}>
                     <MdSearch className={styles.searchButton}/>
                 </Link>
             </div>
         );
     }
-
     const nombreProduitBodyTemplate = (rowData) =>{
         const nombre = rowData.famille.length; 
         return <Tag value={nombre} severity={'info'} style={{fontSize:"10px"}} />;
@@ -56,36 +55,7 @@ const CatalogueAdminPage = () => {
     
     return (
         <div>
-            <div className={stylesT.layoutTopbar}>
-                <Link href="/" className={stylesT.layoutTopbarLogo}>
-                    <Image src="/images/Logo-sidebar.png" alt="Logo" className={styles.logoImage} width={140} height={50} />
-                </Link>
-
-                <button type="button" className={`${stylesT.layoutMenuButton} ${stylesT.pLink}`}>
-                    <i className="pi pi-bars" />
-                </button>
-
-                <button type="button" className={`${stylesT.layoutTopbarMenuButton} ${stylesT.pLink}`}>
-                    <i className="pi pi-ellipsis-v" />
-                </button>
-
-                <div className={stylesT.layoutTopbarMenu}>
-                    <button type="button" className={`${stylesT.layoutTopbarButton} ${stylesT.pLink}`}>
-                        <i className="pi pi-calendar"></i>
-                        <span>Calendar</span>
-                    </button>
-                    <button type="button" className={`${stylesT.layoutTopbarButton} ${stylesT.pLink}`}>
-                        <i className="pi pi-user"></i>
-                        <span>Profile</span>
-                    </button>
-                    <Link href="/documentation">
-                        <button type="button" className={`${stylesT.layoutTopbarButton} ${stylesT.pLink}`}>
-                            <i className="pi pi-cog"></i>
-                            <span>Settings</span>
-                        </button>
-                    </Link>
-                </div>
-            </div>
+          <LayoutTopbar />
 
             <div className={styles.container}>
                 <SidebarAdmin />

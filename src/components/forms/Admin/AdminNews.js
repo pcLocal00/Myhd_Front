@@ -14,26 +14,56 @@ import "primereact/resources/themes/lara-light-indigo/theme.css";
 import "primeflex/primeflex.css";
 import "primeicons/primeicons.css";
 import "primereact/resources/primereact.css";
+import LayoutTopbar from "@/components/common/LayoutTopbar";
 
 
 const NewsAdminPage = () => {
 
     const [news, setNews] = useState([]);
     const [loading, setLoading] = useState(false);
-    const [showModal, setShowModal] = useState(false);
+    const [showModalAdd, setShowModalAdd] = useState(false);
+    const [showModalUpdate, setShowModalUpdate] = useState(false);
+    const [selectedId, setSelectedId] = useState(null);
 
     const [state, setState] = useState({
         titre_news: '',
         sous_titre_news: '',
         description_news: '',
-        IMG_PRODUCT: null,
+        IMAGE_NEWS: null,
     });
 
+    const handleEditClick = (id) => {
+        setSelectedId(id);
+        setShowModalUpdate(true);
+
+        const fetchUpdatedNews = async (id) => {
+            setLoading(true);
+            try {
+                const response = await axios.get(`${Url}/news/${id}`);
+                const data = response.data["data"];
+
+                setState((prevState) => ({
+                    ...prevState,
+                    ...data,
+                    IMAGE_NEWS: null,
+                }));
+            } catch (error) {
+                console.error("Error fetching News:", error);
+            } finally {
+                setLoading(false);
+            }
+        };
+
+        fetchUpdatedNews(id);
+    };
+
     const handleFileChange = (e) => {
+        console.log('log file ',e.target.files[0]);
         const file = e.target.files[0];
+        
         setState((prevState) => ({
           ...prevState,
-          IMG_PRODUCT: file,
+          IMAGE_NEWS: file,
         }));
     };
 
@@ -62,7 +92,7 @@ const NewsAdminPage = () => {
 
     const handleOnSubmit = async (evt) => {
         evt.preventDefault();
-        const { titre_news, sous_titre_news, description_news, IMG_PRODUCT } = state;
+        const { titre_news, sous_titre_news, description_news, IMAGE_NEWS } = state;
     
         if (!titre_news || !sous_titre_news || !description_news) {
             alert('Please fill all the required fields.');
@@ -74,12 +104,16 @@ const NewsAdminPage = () => {
         formData.append('sous_titre_news', sous_titre_news);
         formData.append('description_news', description_news);
         
-        if (IMG_PRODUCT) {
-            formData.append('image_news', IMG_PRODUCT);
+        console.log( 'IMAGE_NEWS LOG', IMAGE_NEWS)
+        if (IMAGE_NEWS) {
+            formData.append('image_news', IMAGE_NEWS);
         }
+
     
         try {
-            const response = await axios.post(`${Url}/news`, formData, {
+            const apiUrl = selectedId ? `${Url}/update/news/${selectedId}` : `${Url}/add/news`;
+
+            const response = await axios.post(apiUrl, formData, {
                 headers: {
                     'Content-Type': 'multipart/form-data',
                 },
@@ -90,9 +124,15 @@ const NewsAdminPage = () => {
                     titre_news: '',
                     sous_titre_news: '',
                     description_news: '',
-                    IMG_PRODUCT: null,
+                    IMAGE_NEWS: null,
                 });
-                setShowModal(false);
+                if (selectedId) {
+                    setShowModalUpdate(false);
+                    reloadTables();
+                } else {
+                    setShowModalAdd(false);
+                    reloadTables();
+                }
             } else {
                 console.log('Error submitting form:', response.data);
             }
@@ -104,13 +144,23 @@ const NewsAdminPage = () => {
             titre_news: '',
             sous_titre_news: '',
             description_news: '',
-            IMG_PRODUCT: null,
+            IMAGE_NEWS: null,
         });
     
-        setShowModal(false);
+        setShowModalAdd(false);
     };
-    
-    const actionBodyTemplate = () =>{
+        
+    const reloadTables = async () => {
+        
+        try {
+            const response = await axios.get(`${Url}/news`);
+            setNews(response.data["data"]);
+        } catch (error) {
+            console.error('Error fetching quantite data:', error);
+        }
+    };
+
+    const actionBodyTemplate = (rowData) =>{
         return(
             <div>
                 <MdEdit className={styles.checkButton} id="editButton" type="submit" onClick={() => handleEditClick(rowData.id)} />
@@ -130,40 +180,10 @@ const NewsAdminPage = () => {
             />
         );
     }
-
-
+        
     return (
         <div>
-            <div className={stylesT.layoutTopbar}>
-                <Link href="/" className={stylesT.layoutTopbarLogo}>
-                    <Image src="/images/Logo-sidebar.png" alt="Logo" className={styles.logoImage} width={160} height={50} />
-                </Link>
-
-                <button type="button" className={`${stylesT.layoutMenuButton} ${stylesT.pLink}`}>
-                    <i className="pi pi-bars" />
-                </button>
-
-                <button type="button" className={`${stylesT.layoutTopbarMenuButton} ${stylesT.pLink}`}>
-                    <i className="pi pi-ellipsis-v" />
-                </button>
-
-                <div className={stylesT.layoutTopbarMenu}>
-                    <button type="button" className={`${stylesT.layoutTopbarButton} ${stylesT.pLink}`}>
-                        <i className="pi pi-calendar"></i>
-                        <span>Calendar</span>
-                    </button>
-                    <button type="button" className={`${stylesT.layoutTopbarButton} ${stylesT.pLink}`}>
-                        <i className="pi pi-user"></i>
-                        <span>Profile</span>
-                    </button>
-                    <Link href="/documentation">
-                        <button type="button" className={`${stylesT.layoutTopbarButton} ${stylesT.pLink}`}>
-                            <i className="pi pi-cog"></i>
-                            <span>Settings</span>
-                        </button>
-                    </Link>
-                </div>
-            </div>
+            <LayoutTopbar />
 
             <div className={styles.container}>
                 <SidebarAdmin />
@@ -175,7 +195,7 @@ const NewsAdminPage = () => {
                                     <h2>Mes News </h2>
                                     <h3>Raccourcis Vers La Prise d’Action</h3>
                                 </div>
-                                <button className={styles.plusButton} id="plusButton" type="submit" onClick={() => setShowModal(true)} >+</button>
+                                <button className={styles.plusButton} id="plusButton" type="submit" onClick={() => setShowModalAdd(true)} >+</button>
                             </div>
                             <div className="card">
                                 <DataTable value={news} paginator showGridlines rows={10} loading={loading} dataKey="id" emptyMessage="Aucun nouvelles trouvé.">
@@ -188,8 +208,8 @@ const NewsAdminPage = () => {
                                 </DataTable>
                             </div>
                         </div>
-                        {showModal && (
-                            <Dialog header={'Ajouter Nouvelle' } visible={showModal} className="custom-dialog" style={{ width: '50vw' }} modal onHide={() => setShowModal(false)}>
+                        {showModalAdd && (
+                            <Dialog header={'Ajouter Nouvelle' } visible={showModalAdd} className="custom-dialog" style={{ width: '50vw' }} modal onHide={() => setShowModalAdd(false)}>
                                 <form onSubmit={handleOnSubmit} style={{width:"100%"}}>
                                     <div>
                                         <div style={{display:"flex" ,justifyContent:"space-between" , gap:"10px"}}>
@@ -244,7 +264,68 @@ const NewsAdminPage = () => {
                                     </div>
                                     <div style={{display:"flex" ,justifyContent:"flex-end" ,marginTop:"10px"}}>
                                         <Button type="submit" label="Confirm" severity="success" icon="pi pi-check" style={{marginRight:"10px"}}/>
-                                        <Button onClick={() => setShowModal(false)} label="Close" severity="danger" icon="pi pi-times" />
+                                        <Button onClick={() => setShowModalAdd(false)} label="Close" severity="danger" icon="pi pi-times" />
+                                    </div>
+                                </form>
+                            </Dialog>
+                        )}
+                        {showModalUpdate && (
+                            <Dialog header={'Edition Nouvelle' } visible={showModalUpdate} className="custom-dialog" style={{ width: '50vw' }} modal onHide={() => setShowModalUpdate(false)}>
+                                <form onSubmit={handleOnSubmit} style={{width:"100%"}}>
+                                    <div>
+                                        <div style={{display:"flex" ,justifyContent:"space-between" , gap:"10px"}}>
+                                            <label>Entête * :</label>
+                                            <input
+                                                type="text"
+                                                placeholder="Entête"
+                                                name="titre_news"
+                                                value={state.titre_news}
+                                                onChange={handleChange}
+                                                className={styles.input}
+                                            />
+                                        </div>
+                                        <div style={{display:"flex" ,justifyContent:"space-between" , gap:"10px"}}>
+                                            <label>Sous-titre * :</label>
+                                            <input
+                                                type="text"
+                                                placeholder="Sous-titre"
+                                                name="sous_titre_news"
+                                                value={state.sous_titre_news}
+                                                onChange={handleChange}
+                                                className={styles.input}
+                                            />
+                                        </div>
+                                        <div style={{display:"flex" ,justifyContent:"space-between" , gap:"10px"}}>
+                                            <label>Description * :</label>
+                                            <input
+                                                type="text"
+                                                placeholder="Description"
+                                                name="description_news"
+                                                value={state.description_news}
+                                                onChange={handleChange}
+                                                className={styles.input}
+                                            />
+                                        </div>
+                                        <div style={{display:"flex" ,justifyContent:"space-between" , gap:"10px" ,height: "40px"}}>
+                                            <label>image :</label>
+                                            <div className={styles.fileInputContainer}>
+                                                <label htmlFor="upload" className={styles.customFileLabel}>
+                                                    Choose File
+                                                </label>
+                                                <input
+                                                    id="upload"
+                                                    type="file"
+                                                    accept=".jpg,.png"
+                                                    name="IMG_PRODUCT"
+                                                    onChange={handleFileChange}
+                                                    className={styles.hiddenFileInput}
+                                                />
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div style={{display:"flex" ,justifyContent:"flex-end" ,marginTop:"10px"}}>
+                                        <Button type="submit" label="Confirm" severity="success" icon="pi pi-check" style={{marginRight:"10px"}}/>
+                                        <Button onClick={() => setShowModalUpdate(false)} label="Close" severity="danger" icon="pi pi-times" />
                                     </div>
                                 </form>
                             </Dialog>

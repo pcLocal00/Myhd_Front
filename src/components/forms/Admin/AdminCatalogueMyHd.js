@@ -3,7 +3,6 @@ import Image from "next/image";
 import Link from "next/link";
 import { Column } from "primereact/column";
 import { DataTable } from "primereact/datatable";
-import stylesT from "../../../styles/components/TapBa.module.scss";
 import styles from "../../../styles/AdminCatalogueForm.module.css";
 import { useEffect, useState } from "react";
 import "primereact/resources/themes/lara-light-indigo/theme.css";
@@ -15,6 +14,7 @@ import { MdEdit ,MdClose, MdSearch } from "react-icons/md";
 import { Dialog } from "primereact/dialog";
 import { Button } from "primereact/button";
 import { Dropdown } from "primereact/dropdown";
+import LayoutTopbar from "@/components/common/LayoutTopbar";
 
 
 const CatalogueAdminPage = () => {
@@ -81,6 +81,7 @@ const CatalogueAdminPage = () => {
 
     const Url = process.env.NEXT_PUBLIC_API_URL;
     const Url_IMAGE = process.env.NEXT_PUBLIC_IMAGE_URL;
+	const Url_IMAGE_LOCAL = process.env.NEXT_PUBLIC_IMAGE_URL_STORAGE;
 
     useEffect(() => {
         const fetchAllData = async () => {
@@ -166,8 +167,10 @@ const CatalogueAdminPage = () => {
                 
                 if (selectedId) {
                     setShowModalUpdate(false);
+                    reloadTables();
                 } else {
                     setShowModalAdd(false);
+                    reloadTables();
                 }
             } else {
                 console.log('Error submitting form:', response.data);
@@ -177,6 +180,21 @@ const CatalogueAdminPage = () => {
         }
     };
     
+    const reloadTables = async () => {
+        
+        try {
+            const [catalogueData, parentData ] = await Promise.all([
+                axios.get(`${Url}/catalogue/myhd`),
+                axios.get(`${Url}/parent/myhd`),
+            ]);
+    
+            setCatalogue(catalogueData.data["data"]);
+            setParent(parentData.data["data"]);
+        } catch (error) {
+            console.error('Error fetching quantite data:', error);
+        }
+    };
+
     const actionBodyTemplate = (rowData) =>{
         return(
             <div>
@@ -187,7 +205,10 @@ const CatalogueAdminPage = () => {
     }
 
     const imageBodyTemplate = (rowData) =>{
-        const image = rowData.img ? `${Url_IMAGE}/${rowData.img}` : "/images/default.jpg";
+
+        const imageUrlBase = rowData.img && rowData.img.startsWith('catalogues') ? Url_IMAGE_LOCAL : Url_IMAGE;
+        const image = rowData.img ? `${imageUrlBase}/${rowData.img}` : "/images/default.jpg";
+
         return( 
             <Image
                 src={image}
@@ -200,37 +221,7 @@ const CatalogueAdminPage = () => {
     
     return (
         <div>
-            <div className={stylesT.layoutTopbar}>
-                <Link href="/" className={stylesT.layoutTopbarLogo}>
-                    <Image src="/images/Logo-sidebar.png" alt="Logo" className={styles.logoImage} width={140} height={50} />
-                </Link>
-
-                <button type="button" className={`${stylesT.layoutMenuButton} ${stylesT.pLink}`}>
-                    <i className="pi pi-bars" />
-                </button>
-
-                <button type="button" className={`${stylesT.layoutTopbarMenuButton} ${stylesT.pLink}`}>
-                    <i className="pi pi-ellipsis-v" />
-                </button>
-
-                <div className={stylesT.layoutTopbarMenu}>
-                    <button type="button" className={`${stylesT.layoutTopbarButton} ${stylesT.pLink}`}>
-                        <i className="pi pi-calendar"></i>
-                        <span>Calendar</span>
-                    </button>
-                    <button type="button" className={`${stylesT.layoutTopbarButton} ${stylesT.pLink}`}>
-                        <i className="pi pi-user"></i>
-                        <span>Profile</span>
-                    </button>
-                    <Link href="/documentation">
-                        <button type="button" className={`${stylesT.layoutTopbarButton} ${stylesT.pLink}`}>
-                            <i className="pi pi-cog"></i>
-                            <span>Settings</span>
-                        </button>
-                    </Link>
-                </div>
-            </div>
-
+            <LayoutTopbar />
             <div className={styles.container}>
                 <SidebarAdmin />
                 <div style={{display:"flex",flexDirection:"column", width:"81%"}}>

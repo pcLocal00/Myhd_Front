@@ -15,6 +15,7 @@ import { MdClose, MdSearch, MdEdit } from "react-icons/md";
 import { Button } from "primereact/button";
 import { Dropdown } from "primereact/dropdown";
 import { Dialog } from "primereact/dialog";
+import LayoutTopbar from "@/components/common/LayoutTopbar";
 
 const AdminFamillePage = () => {
     const [famille, setFamille] = useState([]);
@@ -65,7 +66,7 @@ const AdminFamillePage = () => {
         const file = e.target.files[0];
         setState((prevState) => ({
             ...prevState,
-            image_c: file,
+            IMG_FAMILY: file,
         }));
     };
 
@@ -125,14 +126,31 @@ const AdminFamillePage = () => {
 
                 if (selectedId) {
                     setShowModalUpdate(false);
+                    reloadTables();
                 } else {
                     setShowModalAdd(false);
+                    reloadTables();
                 }
             } else {
                 console.log("Error submitting form:", response.data);
             }
         } catch (error) {
             console.error("Error during form submission:", error);
+        }
+    };
+
+    const reloadTables = async () => {
+        
+        try {
+            const [familleData, parentData ] = await Promise.all([
+                axios.get(`${Url}/famille/myhd`),
+                axios.get(`${Url}/parent/famille`),
+            ]);
+    
+            setFamille(familleData.data["data"]);
+            setParent(parentData.data["data"]);
+        } catch (error) {
+            console.error('Error fetching quantite data:', error);
         }
     };
 
@@ -176,61 +194,10 @@ const AdminFamillePage = () => {
             : "/images/default.jpg";
         return <Image src={image} alt="Logo" width={160} height={100} />;
     };
-
+    reloadTables();
     return (
         <div>
-            <div className={stylesT.layoutTopbar}>
-                <Link href="/" className={stylesT.layoutTopbarLogo}>
-                    <Image
-                        src="/images/Logo-sidebar.png"
-                        alt="Logo"
-                        className={styles.logoImage}
-                        width={160}
-                        height={50}
-                    />
-                </Link>
-
-                <button
-                    type="button"
-                    className={`${stylesT.layoutMenuButton} ${stylesT.pLink}`}
-                >
-                    <i className="pi pi-bars" />
-                </button>
-
-                <button
-                    type="button"
-                    className={`${stylesT.layoutTopbarMenuButton} ${stylesT.pLink}`}
-                >
-                    <i className="pi pi-ellipsis-v" />
-                </button>
-
-                <div className={stylesT.layoutTopbarMenu}>
-                    <button
-                        type="button"
-                        className={`${stylesT.layoutTopbarButton} ${stylesT.pLink}`}
-                    >
-                        <i className="pi pi-calendar"></i>
-                        <span>Calendar</span>
-                    </button>
-                    <button
-                        type="button"
-                        className={`${stylesT.layoutTopbarButton} ${stylesT.pLink}`}
-                    >
-                        <i className="pi pi-user"></i>
-                        <span>Profile</span>
-                    </button>
-                    <Link href="/documentation">
-                        <button
-                            type="button"
-                            className={`${stylesT.layoutTopbarButton} ${stylesT.pLink}`}
-                        >
-                            <i className="pi pi-cog"></i>
-                            <span>Settings</span>
-                        </button>
-                    </Link>
-                </div>
-            </div>
-
+            <LayoutTopbar />
             <div className={styles.container}>
                 <SidebarAdmin />
                 <div style={{ display: "flex", flexDirection: "column", width: "81%" }}>

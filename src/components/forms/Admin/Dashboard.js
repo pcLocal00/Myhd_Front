@@ -14,6 +14,7 @@ import "primereact/resources/primereact.css";
 import styles from "../../../styles/Dashboard.module.css";
 import stylesT from "../../../styles/components/TapBa.module.scss";
 import "primereact/resources/themes/lara-light-indigo/theme.css";
+import LayoutTopbar from "@/components/common/LayoutTopbar";
 
 const Dashboard = () => {
 
@@ -88,36 +89,7 @@ const Dashboard = () => {
 
     return (
         <div>
-            <div className={stylesT.layoutTopbar}>
-                <Link href="/" className={stylesT.layoutTopbarLogo}>
-                    <Image src="/images/Logo-sidebar.png" alt="Logo" className={styles.logoImage} width={160} height={50} />
-                </Link>
-
-                <button type="button" className={`${stylesT.layoutMenuButton} ${stylesT.pLink}`}>
-                    <i className="pi pi-bars" />
-                </button>
-
-                <button type="button" className={`${stylesT.layoutTopbarMenuButton} ${stylesT.pLink}`}>
-                    <i className="pi pi-ellipsis-v" />
-                </button>
-
-                <div className={stylesT.layoutTopbarMenu}>
-                    <button type="button" className={`${stylesT.layoutTopbarButton} ${stylesT.pLink}`}>
-                        <i className="pi pi-calendar"></i>
-                        <span>Calendar</span>
-                    </button>
-                    <button type="button" className={`${stylesT.layoutTopbarButton} ${stylesT.pLink}`}>
-                        <i className="pi pi-user"></i>
-                        <span>Profile</span>
-                    </button>
-                    <Link href="/documentation">
-                        <button type="button" className={`${stylesT.layoutTopbarButton} ${stylesT.pLink}`}>
-                            <i className="pi pi-cog"></i>
-                            <span>Settings</span>
-                        </button>
-                    </Link>
-                </div>
-            </div>
+            <LayoutTopbar />
             <div className={styles.container}>
                 <SidebarAdmin />
                 <div style={{display:"flex",flexDirection:"column", width:"81%"}}>
