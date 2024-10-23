@@ -2,8 +2,6 @@
 export default function handler(req, res) {
     if (req.method === 'POST') {
       const { email, password } = req.body;
-  
-      // Replace this with your actual authentication logic
       if (email === 'test@example.com' && password === 'password') {
         res.status(200).json({ token: 'fake-jwt-token' });
       } else {

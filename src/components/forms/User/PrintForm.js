@@ -19,7 +19,7 @@ const PrintForm = () => {
   useEffect(() => {
     const fetchCategories = async () => {
       try {
-        const response = await axios.get(`${Url}/categorie`);
+        const response = await axios.get(`${Url}/catalogue`);
         setCategorie(response.data.data);
       } catch (error) {
         console.error('Error fetching categorie:', error);
@@ -47,43 +47,43 @@ const PrintForm = () => {
           <nav className={styles.navbar}>
             <ul className={styles.navbarList}>
               {categorie.map((cat) => {
-              const blocksPerLine = cat.categories.length < 8 
-              ? cat.categories.length 
-              : Math.ceil(cat.categories.length / 2);
-              return (
-                  <li key={cat.id}>
-                    <span className={styles.anchorHover} onClick={() => toggleDropdown(cat.id)}>
-                      {cat.title}
-                    </span>
-                    {openDropdown === cat.id && (
-                      <div
-                        className={`${styles.dropdown} ${openDropdown === cat.id ? styles.show : ''} ${styles.blocks_menu} ${styles[`blocks_by_line_${blocksPerLine}`]}`}
-                        data-nb-blocks-by-line={blocksPerLine}
-                      >
-                        {cat.categories.map((item) => (
-                           
-                          <div key={item.id} className={styles.categoriesItem}>
-                                <Image
-                                  src="/images/Visit-card-2.png"
-                                  alt={item.title}
-                                  className={styles.tfo}
-                                  width={100}
-                                  height={100}
-                                />
-                                <Link href={productUrl} passHref style={{ textDecoration: "none", color: "inherit",cursor: "pointer" }}>
-                                  <label>{item.title}</label>
-                                </Link>
-                                {item.SubCategory.map((sub) => (
-                                  <div key={item.id} className={styles.SubCategory}>
-                                      <label>{sub.title}</label>
-                                  </div>
-                                ))}
-                            </div>
-                        ))}
-                      </div>
-                    )}
-                  </li>
-                );
+                const blocksPerLine = cat.famille.length < 8 
+                ? cat.famille.length 
+                : Math.ceil(cat.famille.length / 2);
+                return (
+                    <li key={cat.id}>
+                      <span className={styles.anchorHover} onClick={() => toggleDropdown(cat.id)}>
+                        {cat.title}
+                      </span>
+                      {openDropdown === cat.id && (
+                        <div
+                          className={`${styles.dropdown} ${openDropdown === cat.id ? styles.show : ''} ${styles.blocks_menu} ${styles[`blocks_by_line_${blocksPerLine}`]}`}
+                          data-nb-blocks-by-line={blocksPerLine}
+                        >
+                          {cat.famille.map((item) => (
+                            
+                            <div key={item.id} className={styles.categoriesItem}>
+                                  <Image
+                                    src="/images/Visit-card-2.png"
+                                    alt={item.title}
+                                    className={styles.tfo}
+                                    width={100}
+                                    height={100}
+                                  />
+                                  <Link href={productUrl} passHref style={{ textDecoration: "none", color: "inherit",cursor: "pointer" }}>
+                                    <label>{item.title}</label>
+                                  </Link>
+                                  {item.product.map((sub) => (
+                                    <div key={item.id} className={styles.SubCategory}>
+                                        <label>{sub.title}</label>
+                                    </div>
+                                  ))}
+                              </div>
+                          ))}
+                        </div>
+                      )}
+                    </li>
+                  );
               })}
             </ul>
           </nav>

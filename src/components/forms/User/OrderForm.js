@@ -25,7 +25,7 @@ const OrderForm = () => {
     const [modalType, setModalType] = useState('');
     const [selectedRow, setSelectedRow] = useState(null);
     
-    const orderUrl = `user/order/`;
+    const orderUrl = `/user/order/`;
     const Url = process.env.NEXT_PUBLIC_API_URL;
 
     useEffect(() => {
@@ -42,6 +42,24 @@ const OrderForm = () => {
     
         fetchJobs();
     }, [Url]);
+
+    const handleConfirm = async () => {
+        try {
+            const statusType = modalType === 'accept' ? 'ACCEPTED' : 'CANCELLED';
+            
+            const response = await axios.put(`${Url}/job/${selectedRow.idjob}/${statusType}`);
+            
+            if (response.status === 200) {
+                await fetchJobs();
+                console.log(response.data.message);
+            }
+        } catch (error) {
+            console.error('Error updating status:', error);
+        } finally {
+            setShowModal(false); 
+        }
+    };
+    
 
     const getSeverity = (status) => {
         switch (status) {
@@ -128,15 +146,6 @@ const OrderForm = () => {
         setShowModal(true); 
     };
 
-    const handleConfirm = () => {
-        if (modalType === 'accept') {
-            console.log('Accept action for', selectedRow);
-        } else {
-            console.log('Cancel action for', selectedRow);
-        }
-        setShowModal(false);
-    };
-
     const actionBodyTemplate = (rowData) => {
         return (
             <div>
@@ -195,19 +204,36 @@ const OrderForm = () => {
                             <Column header="Actions" bodyClassName="text-center" style={{fontSize:'12px', minWidth: '7rem', textAlign:'center'}} body={actionBodyTemplate} />
                         </DataTable>
                     </div>
+
                     {showModal && (
-                        <Dialog header={modalType === 'accept' ? 'Confirm Acceptance' : 'Confirm Cancellation'}
+                        <Dialog
+                            header={modalType === 'accept' ? 'Confirm Acceptance' : 'Confirm Cancellation'}
                             visible={showModal}
                             className="custom-dialog"
                             style={{ width: '50vw' }}
                             modal
-                            onHide={() => setShowModal(false)}>
+                            onHide={() => setShowModal(false)}
+                        >
                             <div>
-                                <p>Are you sure you want to {modalType === 'accept' ? 'accept' : 'cancel'} this N°  {selectedRow.estimateNumber}?</p>
+                                <p>
+                                    Are you sure you want to {modalType === 'accept' ? 'accept' : 'cancel'} this N°{' '}
+                                    {selectedRow.estimateNumber}?
+                                </p>
                             </div>
-                            <div style={{display:"flex" ,justifyContent:"flex-end"}}>
-                                <Button onClick={handleConfirm} label="Confirm" severity="success" icon="pi pi-check" style={{marginRight:"10px"}}/>
-                                <Button onClick={() => setShowModal(false)} label="Close" severity="danger" icon="pi pi-times" />
+                            <div style={{ display: 'flex', justifyContent: 'flex-end' }}>
+                                <Button
+                                    onClick={handleConfirm}
+                                    label="Confirm"
+                                    severity="success"
+                                    icon="pi pi-check"
+                                    style={{ marginRight: '10px' }}
+                                />
+                                <Button
+                                    onClick={() => setShowModal(false)}
+                                    label="Close"
+                                    severity="danger"
+                                    icon="pi pi-times"
+                                />
                             </div>
                         </Dialog>
                     )}

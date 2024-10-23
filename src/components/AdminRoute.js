@@ -12,7 +12,7 @@ const AdminRoute = (WrappedComponent) => {
     useEffect(() => {
       const role = localStorage.getItem('role');
       if (role !== '3') {
-        router.push('/user/index');
+        router.push('/user/home');
       }
     }, [router]);
 

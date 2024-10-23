@@ -18,18 +18,17 @@ import "primereact/resources/themes/lara-light-cyan/theme.css";
 const OrderPage = () => {
     const router = useRouter();
     const { id } = router.query;
-    const [devis, setDevis] = useState([]);
+    const [devis, setDevis] = useState({}); 
     const [loading, setLoading] = useState(false);
-    const [checkedFrs, setCheckedFrs] = useState(false);
-    const [checkedClient, setCheckedClient] = useState(false);
-
+    
     const Url = process.env.NEXT_PUBLIC_API_URL;
-
+    
     useEffect(() => {
         const fetchDevis = async () => {
+            setLoading(true); 
             try {
-                const response = await axios.get(`${Url}/user/devis/${id}`);
-                setDevis(response.data);
+                const response = await axios.get(`${Url}/devis/${id}`);
+                setDevis(response.data.devis); 
             } catch (error) {
                 console.error('Error fetching devis:', error);
             } finally {
@@ -40,8 +39,7 @@ const OrderPage = () => {
             fetchDevis();
         }
     }, [id, Url]);
-
-
+    
     return (
         <div className={styles.container}>
             <Sidebar />
@@ -52,13 +50,20 @@ const OrderPage = () => {
                     <h3>Raccourcis Vers La Prise d’Action</h3>
                     <div style={{ display: "flex", gap: "10px" ,alignItems:"center"}}>
                         <span style={{ display: "flex", gap: "5px" ,alignItems:"center"}}><IoCreateOutline /> devis n°:</span>
-                        <span className={styles.darkBlueSpan}>2024151147 </span>
-                        <span className={styles.darkBlueSpan}>Status : Transmis </span>
-                        <span className={styles.darkBlueSpan}>Prix de vente proposé : 184.00 € </span>
+                        <span className={styles.darkBlueSpan}>{devis.quoteNumber} </span>
+                        <span className={styles.darkBlueSpan}>Status : {devis.quoteStatus} </span>
+                        <span className={styles.darkBlueSpan}>Prix de vente proposé : {devis.prixPropose} € </span>
                         <span className={styles.lightBlueSpan}>Crée le : 23-08-2024 15/10/10 </span>
                         <span className={styles.blueSpan}> <FaDownload /> Telecharger devis </span>
-                        <span className={styles.greenSpan}> <FaCheck/> Accepter </span>
-                        <span className={styles.redSpan}> <IoClose/> Refuser</span>
+                        {devis.quoteStatus === "Accepté" ? (
+                            <span className={styles.greenSpan}>
+                            <FaCheck /> Accepter
+                            </span>
+                        ) : (
+                            <span className={styles.redSpan}>
+                            <IoClose /> Refuser
+                            </span>
+                        )}
                     </div>
 
                     <div className={styles.infoContainer}>

@@ -106,12 +106,14 @@ const DevisForm = () => {
         );
     };
 
-    const actionBodyTemplate = () =>{
+    const actionBodyTemplate = (rowData) =>{
         return(
             <div>
                 <MdCheck className={styles.checkButton}/>
                 <MdClose className={styles.closeButton}/>
-                <MdSearch className={styles.searchButton}/>
+                <Link href={`/user/devis/${rowData.id}`} passHref>
+                    <MdSearch className={styles.searchButton}/>
+                </Link>
             </div>
         );
     }
